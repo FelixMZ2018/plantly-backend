@@ -1,0 +1,16 @@
+AllCops:
+  Exclude:
+    - './Gemfile'
+    - './bin/bundle'
+    - ./db/**/*
+    - ./node_modules/**/*
+    - ./config/**/*
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+Style/StringLiterals:
+  EnforcedStyle: double_quotes
+
+Documentation:
+  Enabled: false
