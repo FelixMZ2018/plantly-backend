@@ -26,22 +26,14 @@ jobs:
         run: |
           gem install bundler
           bundle install --jobs 4 --retry 3
-
       - name: Setup Database
         run: |
           cp config/database.yml.github-actions config/database.yml
           bundler exec rails db:create RAILS_ENV=test
           bundler exec rails db:migrate RAILS_ENV=test
+          bundle exec rspec ./spec/requests/datapoint_request_spec.rb
+          bundle exec rspec ./spec/requests/sensor_request_spec.rb
         env:
           RAILS_ENV: test
           POSTGRES_USER: postgres
           POSTGRES_PASSWORD: postgres
-      - name: Run RSpec
-          run: |
-            bundle exec rspec ./spec/requests/datapoint_request_spec.rb
-            bundle exec rspec ./spec/requests/sensor_request_spec.rb
-          env:
-            RAILS_ENV: test
-            POSTGRES_USER: postgres
-            POSTGRES_PASSWORD: postgres
-
