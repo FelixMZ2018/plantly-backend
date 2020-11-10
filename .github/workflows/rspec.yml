@@ -17,7 +17,7 @@ jobs:
 
       - uses: actions/setup-ruby@v1
         with:
-          ruby-version: 2.5.5
+          ruby-version: 2.6.6
 
       - name: Install dependent libraries
         run: sudo apt-get install libpq-dev
@@ -36,15 +36,12 @@ jobs:
           RAILS_ENV: test
           POSTGRES_USER: postgres
           POSTGRES_PASSWORD: postgres
-
       - name: Run RSpec
-        run: COVERAGE=true bundle exec rspec  --require rails_helper
-        env:
-          RAILS_ENV: test
-          POSTGRES_USER: postgres
-          POSTGRES_PASSWORD: postgres
-      - name: Run tests
-        run: |
-          bundle exec rspec ./spec/requests/datapoint_request_spec.rb
-          bundle exec rspec ./spec/requests/sensor_request_spec.rb
+          run: |
+            bundle exec rspec ./spec/requests/datapoint_request_spec.rb
+            bundle exec rspec ./spec/requests/sensor_request_spec.rb
+          env:
+            RAILS_ENV: test
+            POSTGRES_USER: postgres
+            POSTGRES_PASSWORD: postgres
 
