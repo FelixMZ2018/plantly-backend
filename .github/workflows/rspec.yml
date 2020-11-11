@@ -30,7 +30,7 @@ jobs:
           bundler exec rails db:create RAILS_ENV=test
           bundler exec rails db:migrate RAILS_ENV=test
       - name: rspec testing
-        - run: |
+        run: |
           bundle exec rspec ./spec/requests/datapoint_request_spec.rb
           bundle exec rspec ./spec/requests/sensor_request_spec.rb
         env:
