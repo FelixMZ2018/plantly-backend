@@ -12,5 +12,5 @@ Style/FrozenStringLiteralComment:
 Style/StringLiterals:
   EnforcedStyle: double_quotes
 
-Documentation:
+Style/Documentation:
   Enabled: false
