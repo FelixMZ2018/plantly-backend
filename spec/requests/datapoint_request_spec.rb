@@ -7,9 +7,7 @@ test_message = JSON.parse(
   ,
   "sensor": [{"index": 0,"value": 755}
   ,
-  {"index": 1,"value": 603},
-  {"index": 2,"value": 991},
-  {"index": 3,"value": 1023}]}'
+  {"index": 1,"value": 603}]}'
 )
 
 puts test_message
@@ -25,11 +23,13 @@ RSpec.describe Datapoint, type: :model do
     dp_no_value = Datapoint.new(sensor_id: 1, value: nil)
     expect(dp_no_value).to_not be_valid
   end
-  # it "Should understand the Sensor Message" do
-  #   test_group = Group.new(name: "Living_Room_")
-  #   test_group.save
-  #   test_sensor = Sensor.create(group_id: test_group.id, hardware_id: "Living_Room_0")
-  #   interpret_message(test_message)
-  #   expect(Datapoint.last.value).to eq(1023)
-  # end
+  it "Should understand the Sensor Message" do
+    test_group = Group.create(name: "Living Room")
+    Sensor.create(group_id: test_group.id, hardware_id: "Living_Room_0")
+    Sensor.create(group_id: test_group.id, hardware_id: "Living_Room_1")
+    interpret_message(test_message)
+    expect(Datapoint.count).to eq 2
+    expect(Datapoint.all[0].value).to eq 755
+    expect(Datapoint.all[1].value).to eq 603
+  end
 end
