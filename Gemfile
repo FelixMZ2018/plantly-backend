@@ -55,4 +55,5 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'json' # JSON PARSER 
 gem 'mqtt' # MQTT CLient 
- gem 'rspec-rails', '~> 4.0.1'
+gem 'rspec-rails', '~> 4.0.1'
+gem 'simplecov', require: false, group: :test
