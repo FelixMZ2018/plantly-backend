@@ -10,6 +10,11 @@ Sensor.destroy_all
 Plant.destroy_all
 Group.destroy_all
 gr = Group.create(name: 'Living Room')
-pl = Plant.create(group_id: gr.id, name: 'Fancy Ficus')
-Sensor.create(hardware_id: 'Living_Room_3', plant_id: pl.id)
+pl3 = Plant.create(group_id: gr.id, name: 'Fancy Ficus')
+pl1 = Plant.create(group_id: gr.id, name: 'Amazing Aloe')
+pl2 = Plant.create(group_id: gr.id, name: 'Magnificient Monstera')
+Sensor.create(hardware_id: 'Living_Room_3', plant_id: pl3.id)
+Sensor.create(hardware_id: 'Living_Room_1', plant_id: pl1.id)
+Sensor.create(hardware_id: 'Living_Room_2', plant_id: pl2.id)
+
 puts 'Project Seeded'
