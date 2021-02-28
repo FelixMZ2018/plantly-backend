@@ -1,0 +1,2 @@
+class DatapointsController < ApplicationController
+end
