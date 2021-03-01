@@ -1,0 +1,46 @@
+import React from "react";
+import { connect } from "react-redux";
+import { triggerModal } from '../../actions';
+import { DashboardApiCallAction } from "../../actions";
+import { useFormik } from 'formik';
+
+
+class CreateGroup extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      name: "",
+      hardware_id: ""
+    }
+  
+  };
+
+  render() {
+    return (
+      <div>
+        <form onSubmit={this.handleSubmit}>
+          <label>
+            Group Name:
+            <input
+              name="name"
+              type="text"
+              value={this.state.name}
+            />
+          </label>
+          <br />
+          <label>
+            Enter the Hardware ID used in the Sensor Hub
+            <input
+              name="hardware_id"
+              type="text"
+              value={this.state.hardware_id}
+            />
+          </label>
+          <input type="submit" value="Submit" />
+        </form>
+      </div>
+    );
+  }
+}
+
+export default connect(null, { DashboardApiCallAction , triggerModal }) (CreateGroup);
