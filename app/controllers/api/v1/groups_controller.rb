@@ -5,7 +5,7 @@ module Api
 
       def dashboard
         @group = Group.all
-        render json: @group, include: %i[plants sensors], root: "groups"
+        render json: @group, include: %i[sensors], root: "groups"
       end
 
       def index; end

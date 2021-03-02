@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_28_214758) do
+ActiveRecord::Schema.define(version: 2021_03_02_095736) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -73,7 +73,7 @@ ActiveRecord::Schema.define(version: 2021_02_28_214758) do
     t.bigint "sensor_id"
     t.string "image"
     t.bigint "species_id"
-    t.date "fertilizerTimestamp", default: "2021-02-21"
+    t.date "fertilizerTimestamp", default: "2021-03-02"
     t.integer "fertilizerInterval", default: 14
     t.index ["group_id"], name: "index_plants_on_group_id"
     t.index ["sensor_id"], name: "index_plants_on_sensor_id"
