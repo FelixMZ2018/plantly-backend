@@ -13,7 +13,11 @@ module.exports = {
         light: '#E0E6ED',
         lightest: '#F9FAFC',
       },
+      white:{
+        DEFAULT: '#fff'
+      },
       textColor: {
+        'darkgreen': '#0C3F36',
         'primary': '#fff',
         'secondary': '#ffed4a',
         'danger': '#e3342f',
