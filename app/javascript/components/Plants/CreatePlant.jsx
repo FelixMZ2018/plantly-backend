@@ -1,14 +1,11 @@
 import React from 'react';
 import { render } from 'react-dom';
 
-class CreatePlant extends React.Component {
-    render(){
+const CreatePlant =(props) => {
         return(
             <div className="createPlant"> Form goes here
             </div> 
         )
-    }
-
 }
 
 export default CreatePlant

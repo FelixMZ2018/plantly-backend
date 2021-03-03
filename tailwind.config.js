@@ -13,6 +13,11 @@ module.exports = {
         light: '#E0E6ED',
         lightest: '#F9FAFC',
       },
+      textColor: {
+        'primary': '#fff',
+        'secondary': '#ffed4a',
+        'danger': '#e3342f',
+      }
     }
   }
 }

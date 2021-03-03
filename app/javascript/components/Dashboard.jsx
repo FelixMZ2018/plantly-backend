@@ -35,10 +35,10 @@ class Dashboard extends React.Component {
   }
   render() {
     return (
-      <div className="Dashboard p-2">
+      <div className="Dashboard">
         {(this.state.isLoaded = false && <h2>Fetching Data!</h2>)}
         {this.state.groups.map((group) => (
-          <GroupCard group={group}/>
+          <GroupCard key={group.id} group={group}/>
         ))}
       </div>
     );
