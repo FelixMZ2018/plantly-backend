@@ -1,35 +1,46 @@
-import React from 'react';
-import { BrowserRouter as Router,Switch,Route,Link, NavLink} from "react-router-dom";
+import React from "react";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link,
+  NavLink,
+} from "react-router-dom";
 
-import Sidebar from './components/Sidebar';
-import Breadcrumbs from './components/Breadcrumbs';
-import Notifications from './components/Notifications';
-import CentralWindow from './components/CentralWindow';
-import Dashboard from './components/Dashboard';
+import Sidebar from "./components/Sidebar";
+import Breadcrumbs from "./components/Breadcrumbs";
+import Notifications from "./components/Notifications";
+import CentralWindow from "./components/CentralWindow";
+import Dashboard from "./components/Dashboard";
+import CreatePlant from "./components/Plants/CreatePlant";
 
-class App extends React.Component{
-    render(){
-        return(
-         <Router>
-            <div className="container">
-                <Sidebar>
+class App extends React.Component {
+  render() {
+    return (
+      <Router>
+        <div className="container">
+        <div className="flex flex-wrap item-center">
+          <Breadcrumbs />
+          <Notifications />
+          </div>
+          <Sidebar></Sidebar>
 
-                </Sidebar>
-                <Breadcrumbs/>
-                <Notifications/>
-                <CentralWindow>
-                <Switch>
-                    <Route path="/">
-                        <Dashboard/>
-                    </Route>
-                </Switch>
-                </CentralWindow>
-                <Link to="/">Home</Link>
-
-            </div>
-        </Router>
-        )
-    }
+          <CentralWindow>
+            <Switch>
+              <Route path="/plant/new">
+                <CreatePlant />
+              </Route>
+              <Route path="/">
+                <Dashboard />
+              </Route>
+            </Switch>
+          </CentralWindow>
+          <Link to="/plant/new">Add a Plant</Link>
+          <Link to="/">Home</Link>
+        </div>
+      </Router>
+    );
+  }
 }
 
-export default App
+export default App;

@@ -6,6 +6,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import PropTypes from 'prop-types'
 import App from '../index'
+import "../../assets/stylesheets/application"
 
 document.addEventListener('DOMContentLoaded', () => {
   ReactDOM.render(
