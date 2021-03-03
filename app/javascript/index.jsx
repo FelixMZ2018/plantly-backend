@@ -18,12 +18,13 @@ class App extends React.Component {
   render() {
     return (
       <Router>
-        <div className="container mx-auto">
-        <div className="flex flex-wrap item-center">
+        <div className="container w-screen p-0">
+        <div className="flex flex-wrap item-center w-screen justify-between">
+          <div className="bg-gray p-2"> Sturdy Pancake! </div>
           <Breadcrumbs />
           <Notifications />
           </div>
-          <div className="flex flex-row flex-wrap">
+          <div className="flex flex-row flex-wrap w-screen">
           <Sidebar></Sidebar>
 
           <CentralWindow>
@@ -36,8 +37,6 @@ class App extends React.Component {
               </Route>
             </Switch>
           </CentralWindow>
-          <Link to="/plant/new">Add a Plant</Link>
-          <Link to="/">Home</Link>
         </div>
         </div>
       </Router>

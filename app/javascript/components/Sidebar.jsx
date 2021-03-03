@@ -3,7 +3,7 @@ import React from 'react'
 class Sidebar extends React.Component{
     render () {
         return(
-            <div className="Sidebar flex-initial">Sidebar goes really here</div>
+            <div className="Sidebar flex-initial bg-green-dark p-2">Sidebar goes here</div>
         )
     }
 }
