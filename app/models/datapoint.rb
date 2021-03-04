@@ -2,6 +2,8 @@ class Datapoint < ApplicationRecord
   validates_presence_of :sensor_id
   validates_presence_of :value
   belongs_to :sensor
+  belongs_to :user
+
 
   ## Format JSON and create sensor if not already existing
   def parse_reading(reading)
