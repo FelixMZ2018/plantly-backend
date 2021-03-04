@@ -1,5 +1,5 @@
 class AuthController < ApplicationController
-  before_action :require_login
+  skip_before_action :require_login, only: [:login, :auto_login]
 
   def logged_in?
     !!session_user
@@ -16,7 +16,7 @@ class AuthController < ApplicationController
       token = encode_token(payload)
       render json: { user: user, jwt: token, success: "Welcome back, #{user.username}" }
     else
-      render json: { failure: "Login failed, Please check credentials" }
+      render json: { failure: "Login failed, Please check credentials" },status: 401
     end
   end
 
