@@ -1,9 +1,8 @@
 Rails.application.routes.draw do
   default_url_options :host => "localhost:3000"
-
   namespace :api do
     namespace :v1 do
-      get 'dashboard', to: 'groups#dashboard'
+      get '/dashboard', to: 'groups#dashboard'
       get 'groups/index'
       post 'groups/create', to: 'groups#create'
       get 'groups/:id', to: 'groups#show'
@@ -16,6 +15,8 @@ Rails.application.routes.draw do
 
     end
   end
+  get 'app', to: 'homepage#index'
+  get 'login', to: 'homepage#login'
   root 'homepage#index'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

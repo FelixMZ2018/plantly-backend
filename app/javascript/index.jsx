@@ -18,7 +18,7 @@ import ViewPlant from "./components/Plants/ViewPlant"
 class App extends React.Component {
   render() {
     return (
-      <Router>
+      <Router basename={"app"}      >
         <div className="container w-screen p-0 text-textColor-primary">
           <div className="flex flex-wrap item-center w-screen justify-between">
             <Link to="/">

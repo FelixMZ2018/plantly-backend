@@ -1,4 +1,6 @@
 import React from "react";
+import { axiosInstance } from '../clients/axiosInstance';
+
 import GroupCard from "../components/Groups/Groupcard";
 
 class Dashboard extends React.Component {
@@ -12,26 +14,14 @@ class Dashboard extends React.Component {
   }
 
   componentDidMount() {
-    const url = "api/v1/dashboard";
-    fetch(url)
-      .then((res) => res.json())
-      .then(
-        (result) => {
-          this.setState({
-            isLoaded: true,
-            groups: result,
-          });
-        },
-        // Note: it's important to handle errors here
-        // instead of a catch() block so that we don't swallow
-        // exceptions from actual bugs in components.
-        (error) => {
-          this.setState({
-            isLoaded: true,
-            error,
-          });
-        }
-      );
+    axiosInstance.get(`api/v1/dashboard`)
+      .then(res => {
+        const groups = res.data;
+        this.setState({
+          isLoaded: true,
+          groups: groups,
+        })
+      });
   }
   render() {
     return (
