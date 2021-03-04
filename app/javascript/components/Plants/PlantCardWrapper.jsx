@@ -8,7 +8,7 @@ class PlantCardWrapper extends React.Component{
         return(
             <div className="PlantCardWrapper grid grid-cols-4">
             {this.props.plants.map((plant) => (
-          <Link to={`/plants/${plant.id}`}>
+          <Link key={plant.id} to={`/plants/${plant.id}`}>
           <PlantCard key={plant.id} plant={plant}/>
                 </Link>
               ))}

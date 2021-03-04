@@ -3,7 +3,7 @@ import { render } from 'react-dom';
 
 const CreatePlant =(props) => {
         return(
-            <div className="createPlant"> Form goes here
+            <div className="createPlant bg-green-light"> Form goes here
             </div> 
         )
 }
