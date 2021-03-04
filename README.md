@@ -1,7 +1,7 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Open Source Smart Plant System capable of monitoring Soil Moisture,Light and Humidity offering an easy to use UI and (pending) fast setup
+
 
 Things you may want to cover:
 
