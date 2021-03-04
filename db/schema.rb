@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_02_095736) do
+ActiveRecord::Schema.define(version: 2021_03_04_145434) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -48,7 +48,9 @@ ActiveRecord::Schema.define(version: 2021_03_02_095736) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "sensor_id"
+    t.bigint "user_id"
     t.index ["sensor_id"], name: "index_datapoints_on_sensor_id"
+    t.index ["user_id"], name: "index_datapoints_on_user_id"
   end
 
   create_table "groups", force: :cascade do |t|
@@ -58,6 +60,8 @@ ActiveRecord::Schema.define(version: 2021_03_02_095736) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.datetime "timestamp"
+    t.bigint "user_id"
+    t.index ["user_id"], name: "index_groups_on_user_id"
   end
 
   create_table "images", force: :cascade do |t|
@@ -73,11 +77,13 @@ ActiveRecord::Schema.define(version: 2021_03_02_095736) do
     t.bigint "sensor_id"
     t.string "image"
     t.bigint "species_id"
-    t.date "fertilizerTimestamp", default: "2021-03-02"
+    t.date "fertilizerTimestamp", default: "2021-03-04"
     t.integer "fertilizerInterval", default: 14
+    t.bigint "user_id"
     t.index ["group_id"], name: "index_plants_on_group_id"
     t.index ["sensor_id"], name: "index_plants_on_sensor_id"
     t.index ["species_id"], name: "index_plants_on_species_id"
+    t.index ["user_id"], name: "index_plants_on_user_id"
   end
 
   create_table "sensors", force: :cascade do |t|
@@ -101,7 +107,17 @@ ActiveRecord::Schema.define(version: 2021_03_02_095736) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "users", force: :cascade do |t|
+    t.string "username"
+    t.string "password_digest"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "datapoints", "users"
+  add_foreign_key "groups", "users"
   add_foreign_key "plants", "species"
+  add_foreign_key "plants", "users"
 end

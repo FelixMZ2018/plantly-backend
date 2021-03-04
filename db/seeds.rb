@@ -9,8 +9,11 @@ Datapoint.destroy_all
 Sensor.destroy_all
 Plant.destroy_all
 Group.destroy_all
-gr = Group.create(name: 'Living Room',hardware_id: 'Living_Room_')
-pl1 = Plant.create(group_id: gr.id, name: 'Fancy Ficus')
+User.destroy_all
+user1 = User.create(username: "sample", password: "sample")
+
+gr = Group.create(name: 'Living Room',hardware_id: 'Living_Room_',user_id: user1.id)
+pl1 = Plant.create(group_id: gr.id, name: 'Fancy Ficus',user_id: user1.id)
 pl1.image.attach(io: File.open('app/assets/images/seed_images/Ficus.jpeg'), filename: 'Ficus.jpeg')
 pl2 = Plant.create(group_id: gr.id, name: 'Amazing Aloe')
 pl2.image.attach(io: File.open('app/assets/images/seed_images/AloeVera.jpg'), filename: 'AloeVera.jpg')
