@@ -14,8 +14,18 @@ import CentralWindow from "./components/CentralWindow";
 import Dashboard from "./components/Dashboard";
 import CreatePlant from "./components/Plants/CreatePlant";
 import ViewPlant from "./components/Plants/ViewPlant"
+import Login from './components/Login'
 
 class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      isloggedin: false,
+      userID: null,
+      token: null
+    };
+  }
+  
   render() {
     return (
       <Router basename={"app"}      >
@@ -32,6 +42,9 @@ class App extends React.Component {
 
             <CentralWindow>
               <Switch>
+                <Route path="/">
+                  <Login/>
+                </Route>
                 <Route
                   path="/plant/new"
                   render={(props) => (
@@ -48,7 +61,7 @@ class App extends React.Component {
                   )}
                 />
 
-                <Route path="/">
+                <Route path="/dashboard">
                   <Dashboard />
                 </Route>
               </Switch>

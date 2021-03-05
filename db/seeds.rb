@@ -12,7 +12,7 @@ Group.destroy_all
 User.destroy_all
 user1 = User.create(username: "sample", password: "sample")
 
-gr = Group.create(name: 'Living Room',hardware_id: 'Living_Room_',user_id: user1.id)
+gr = Group.create(name: 'Living Room',hardware_id: 'e61eb5b8-08da-4cbc-9892-faae2769f64d',user_id: user1.id)
 pl1 = Plant.create(group_id: gr.id, name: 'Fancy Ficus',user_id: user1.id)
 pl1.image.attach(io: File.open('app/assets/images/seed_images/Ficus.jpeg'), filename: 'Ficus.jpeg')
 pl2 = Plant.create(group_id: gr.id, name: 'Amazing Aloe')

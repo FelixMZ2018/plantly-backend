@@ -1,11 +1,12 @@
 module Api
   module V1
     class PlantsController < ApplicationController
+      rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
 
-      def index
-        @group = Group.all
-        render json: @group, include: %i[plants sensors], root: "groups"
+      def record_not_found
+        render json: { message: "Plant not found" }, status: 404
       end
+      def index; end
 
       def new
         @plant = Plant.new

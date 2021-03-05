@@ -7,14 +7,12 @@ import ReactDOM from 'react-dom'
 import PropTypes from 'prop-types'
 
 import "../../assets/stylesheets/application"
-import LoginForm from '../components/LoginForm'
+
 import App from '../index'
-import Wrapper from '../components/Wrapper.jsx'
 
 document.addEventListener('DOMContentLoaded', () => {
   ReactDOM.render(
-    <Wrapper>
-    </Wrapper>,
+    <App/>,
     document.body.appendChild(document.createElement('div')),
   )
 })

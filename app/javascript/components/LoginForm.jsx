@@ -4,13 +4,13 @@ import { axiosInstance } from "../clients/axiosInstance";
 
 function LoginForm() {
   return (
-    <div className="flex flex-col flex_nowrap justify-center h-screen w-screen content-center text-center bg-green-dark">
+    <div className="flex flex-col flex_nowrap justify-center h-screen w-screen content-center text-center items-center">
       <h1>Sturdy Pancake! </h1>
       <Formik
         className="flex flex-col"
         initialValues={{
           username: "",
-          passsword: "",
+          password: "",
         }}
         onSubmit={async (values) => {
           await new Promise((r) => setTimeout(r, 500));
@@ -26,24 +26,26 @@ function LoginForm() {
           //        alert(JSON.stringify(values, null, 2));
         }}
       >
-        <Form className="flex flex-col justify-center justify-items-center justify-self-auto align-content-center content-center text-center">
-          <label htmlFor="Username">Username</label>
+        <Form className="flex flex-col justify-center align-content-center text-center w-1/5">
+          <label htmlFor="Username" className="text-green-dark">Username</label>
           <Field
-            className="w-1/5 self-center"
+            className="self-center text-green-dark"
             id="username"
             name="username"
             placeholder="User"
           />
 
-          <label htmlFor="lastName">Password</label>
+          <label htmlFor="lastName" className="text-green-dark">Password</label>
           <Field
-            className="w-1/5 self-center"
+            className="self-center text-green-dark"
             id="password"
             name="password"
             placeholder="Password"
           />
-
-          <button type="submit">Submit</button>
+          <div>
+          <button className="w-1/3 p-2 m-4 bg-green-dark inline rounded-md shadow-lg hover:shadow-sm cursor-pointer self-start" type="submit">Sign up</button>
+          <button className="w-1/3 p-2 m-4 bg-green-dark inline rounded-md shadow-lg hover:shadow-sm cursor-pointer self-start" type="submit">Submit</button>
+          </div>
         </Form>
       </Formik>
       <h3>Closed beta for now, but please reach out to me for an invite</h3>

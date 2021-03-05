@@ -21,11 +21,15 @@ class ApplicationController < ActionController::API
   end
 
   def session_user
+    begin
     decoded_hash = decoded_token
     unless decoded_hash.empty?
       puts decoded_hash.class
       user_id = decoded_hash[0]["user_id"]
       @user = User.find_by(id: user_id)
+    end
+    rescue NoMethodError
+      render json: { message: "Missing Authorization Header" }, status: :unauthorized
     end
   end
 
