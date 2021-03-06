@@ -1,4 +1,4 @@
-import React,{setState,useState} from "react";
+import React, { setState, useState, useEffect } from "react";
 import {
   HashRouter as Router,
   Switch,
@@ -6,6 +6,7 @@ import {
   Link,
   NavLink,
 } from "react-router-dom";
+import { axiosInstance } from "./clients/axiosInstance";
 
 import Sidebar from "./components/Sidebar";
 import Breadcrumbs from "./components/Breadcrumbs";
@@ -13,61 +14,86 @@ import Notifications from "./components/Notifications";
 import CentralWindow from "./components/CentralWindow";
 import Dashboard from "./components/Dashboard";
 import CreatePlant from "./components/Plants/CreatePlant";
-import ViewPlant from "./components/Plants/ViewPlant"
-import Login from './components/Login'
-import PrivateRoute from './components/General/PrivateRoute'
+import ViewPlant from "./components/Plants/ViewPlant";
+import Login from "./components/Login";
+import PrivateRoute from "./components/General/PrivateRoute";
 
-function App () {
-  const [user, setUser] = useState({user: null,token: null,auth: false})
+function App() {
+  const [user, setUser] = useState({ user: null, token: null, auth: false });
 
   const handleLogin = (user) => {
-    setUser(user)
+    setUser(user);
+  };
+
+  const autoLogin = () => {
+    console.log("YEAH");
+    const token = localStorage.getItem("token");
+    if (token) {
+      console.log(token);
+      axiosInstance
+        .get("auto_login",
+        { headers: {"Authorization" : `Bearer ${token}`} }
+        )
+        .then(function (response) {
+          console.log(response);
+          if (response.status === 200) {
+            localStorage.setItem("token", response.data.jwt);
+            handleLogin({
+              user: response.username,
+              token: token,
+              auth: true,
+            });
+          }
+        });
+    }
   }
 
-    return (
-      <Router basename={"app"}>
-        <div className="container w-screen p-0 text-textColor-primary">
-          <div className="flex flex-wrap item-center w-screen justify-between">
-            <Link to="/">
-              <div className="bg-gray p-2"> Sturdy Pancake! </div>
-            </Link>
-            <Breadcrumbs />
-            <Notifications />
-          </div>
-          <div className="flex flex-row flex-wrap w-screen h-screen">
-            <Sidebar/>
-            <CentralWindow>
-              <Switch>
-              <Route
-                  path="/login"
-                  render={(props) => (
-                    <Login
-                      {...props}
-                      handleLogin={handleLogin}
-                    />
-                  )}
-                />                
-                <PrivateRoute path="/" component={Dashboard} auth={user.auth}/>
-                <Route
-                  path="/plant/new"
-                  render={(props) => (
-                    <CreatePlant
-                      {...props}
-                      group_id={props.location.state.group_id}
-                    />
-                  )}
-                />
-                <Route
-                  path="/plants/:id"
-                  render={(props) => (
-                    <ViewPlant/>
-                  )}
-                />
-              </Switch>
-            </CentralWindow>
-          </div>
+  useEffect(() => {
+    if (user.auth ===false) {
+      autoLogin()
+    }
+  });
+
+  return (
+    <Router basename={"app"}>
+      <div className="container w-screen p-0 text-textColor-primary">
+        <div className="flex flex-wrap item-center w-screen justify-between">
+          <Link to="/">
+            <div className="bg-gray p-2"> Sturdy Pancake! </div>
+          </Link>
+          <Breadcrumbs />
+          <Notifications />
         </div>
-      </Router>
-    );
-  }
+        <div className="flex flex-row flex-wrap w-screen h-screen">
+          <Sidebar />
+          <CentralWindow>
+            <Switch>
+              <Route
+                path="/login"
+                render={(props) => (
+                  <Login {...props} handleLogin={handleLogin} />
+                )}
+              />
+              <PrivateRoute
+                path="/"
+                auth={user.auth}
+                render={(props) => <Dashboard {...props} />}
+              />
+              <Route
+                path="/plant/new"
+                render={(props) => (
+                  <CreatePlant
+                    {...props}
+                    group_id={props.location.state.group_id}
+                  />
+                )}
+              />
+              <Route path="/plants/:id" render={(props) => <ViewPlant />} />
+            </Switch>
+          </CentralWindow>
+        </div>
+      </div>
+    </Router>
+  );
+}
 export default App;
