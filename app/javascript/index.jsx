@@ -1,6 +1,6 @@
-import React from "react";
+import React,{setState,useState} from "react";
 import {
-  BrowserRouter as Router,
+  HashRouter as Router,
   Switch,
   Route,
   Link,
@@ -17,19 +17,15 @@ import ViewPlant from "./components/Plants/ViewPlant"
 import Login from './components/Login'
 import PrivateRoute from './components/General/PrivateRoute'
 
-class App extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      isloggedin: false,
-      userID: null,
-      token: null
-    };
+function App () {
+  const [user, setUser] = useState({user: null,token: null,auth: false})
+
+  const handleLogin = (user) => {
+    setUser(user)
   }
-  
-  render() {
+
     return (
-      <Router basename={"app"}      >
+      <Router basename={"app"}>
         <div className="container w-screen p-0 text-textColor-primary">
           <div className="flex flex-wrap item-center w-screen justify-between">
             <Link to="/">
@@ -42,8 +38,16 @@ class App extends React.Component {
             <Sidebar/>
             <CentralWindow>
               <Switch>
-                <Route path="/login" component={Login}/>
-                <PrivateRoute path="/" component={Dashboard} auth={this.state.isloggedin}/>
+              <Route
+                  path="/login"
+                  render={(props) => (
+                    <Login
+                      {...props}
+                      handleLogin={handleLogin}
+                    />
+                  )}
+                />                
+                <PrivateRoute path="/" component={Dashboard}/>
                 <Route
                   path="/plant/new"
                   render={(props) => (
@@ -66,6 +70,4 @@ class App extends React.Component {
       </Router>
     );
   }
-}
-
 export default App;

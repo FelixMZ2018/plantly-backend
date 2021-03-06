@@ -22,7 +22,6 @@ class Wrapper extends React.Component {
         return <App></App>
       } else {
         return <LoginForm></LoginForm>
-
       }
     }
     return(

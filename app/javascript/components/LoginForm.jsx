@@ -1,8 +1,8 @@
-import React from "react";
+import React,{useState} from "react";
 import { Formik, Field, Form } from "formik";
 import { axiosInstance } from "../clients/axiosInstance";
 
-function LoginForm() {
+function LoginForm(props) {
   return (
     <div className="flex flex-col flex_nowrap justify-center h-screen w-screen content-center text-center items-center">
       <h1>Sturdy Pancake! </h1>
@@ -21,6 +21,10 @@ function LoginForm() {
           })
           .then(function (response) {
             console.log(response);
+            if (response.status === 200) {
+              localStorage.setItem("token", response.data.jwt)
+              props.handleLogin({user: response.data.user,token: response.data.jwt ,auth: true})
+            }
           })
         
           //        alert(JSON.stringify(values, null, 2));
@@ -48,7 +52,6 @@ function LoginForm() {
           </div>
         </Form>
       </Formik>
-      <h3>Closed beta for now, but please reach out to me for an invite</h3>
     </div>
   );
 }
