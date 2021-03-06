@@ -47,7 +47,7 @@ function App () {
                     />
                   )}
                 />                
-                <PrivateRoute path="/" component={Dashboard}/>
+                <PrivateRoute path="/" component={Dashboard} auth={user.auth}/>
                 <Route
                   path="/plant/new"
                   render={(props) => (

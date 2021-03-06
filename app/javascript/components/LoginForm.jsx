@@ -23,7 +23,7 @@ function LoginForm(props) {
             console.log(response);
             if (response.status === 200) {
               localStorage.setItem("token", response.data.jwt)
-              props.handleLogin({user: response.data.user,token: response.data.jwt ,auth: true})
+              props.handleLogin({user: response.data.user.username,token: response.data.jwt ,auth: true})
             }
           })
         
