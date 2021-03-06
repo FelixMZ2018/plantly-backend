@@ -15,6 +15,7 @@ import Dashboard from "./components/Dashboard";
 import CreatePlant from "./components/Plants/CreatePlant";
 import ViewPlant from "./components/Plants/ViewPlant"
 import Login from './components/Login'
+import PrivateRoute from './components/General/PrivateRoute'
 
 class App extends React.Component {
   constructor(props) {
@@ -38,13 +39,11 @@ class App extends React.Component {
             <Notifications />
           </div>
           <div className="flex flex-row flex-wrap w-screen h-screen">
-            <Sidebar></Sidebar>
-
+            <Sidebar/>
             <CentralWindow>
               <Switch>
-                <Route path="/">
-                  <Login/>
-                </Route>
+                <Route path="/login" component={Login}/>
+                <PrivateRoute path="/" component={Dashboard} auth={this.state.isloggedin}/>
                 <Route
                   path="/plant/new"
                   render={(props) => (
@@ -60,10 +59,6 @@ class App extends React.Component {
                     <ViewPlant/>
                   )}
                 />
-
-                <Route path="/dashboard">
-                  <Dashboard />
-                </Route>
               </Switch>
             </CentralWindow>
           </div>

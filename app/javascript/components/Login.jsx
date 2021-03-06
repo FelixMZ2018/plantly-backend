@@ -8,9 +8,14 @@ class Login extends React.Component {
             method: "login"
         };
       }
+
+
   render() {
+    function changeMethod(method) {
+        
+    }
     return (
-    <div className=" flex flex-col flex_nowrap justify-center h-screen w-screen content-center text-center items-center bg-green-light">
+    <div className=" flex flex-col flex_nowrap justify-center h-max w-max content-center text-center  bg-green-light">
         <LoginForm/>
     </div>
     )}
