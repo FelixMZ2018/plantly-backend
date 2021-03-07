@@ -1,8 +1,12 @@
 import React,{useState} from "react";
 import { Formik, Field, Form } from "formik";
 import { axiosInstance } from "../clients/axiosInstance";
+import { useHistory } from "react-router-dom";
+
 
 function LoginForm(props) {
+  const history = useHistory();
+
   return (
     <div className="flex flex-col flex_nowrap justify-center h-screen w-screen content-center text-center items-center">
       <h1>Sturdy Pancake! </h1>
@@ -24,6 +28,8 @@ function LoginForm(props) {
             if (response.status === 200) {
               localStorage.setItem("token", response.data.jwt)
               props.handleLogin({user: response.data.user.username,token: response.data.jwt ,auth: true})
+              history.push("/");
+
             }
           })
         

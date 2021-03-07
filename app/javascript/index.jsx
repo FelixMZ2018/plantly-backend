@@ -57,7 +57,7 @@ function App() {
   return (
     <Router basename={"app"}>
       <div className="container w-screen p-0 text-textColor-primary">
-        <div className="flex flex-wrap item-center w-screen justify-between">
+        <div className="sticky flex flex-wrap item-center w-screen justify-between">
           <Link to="/">
             <div className="bg-gray p-2"> Sturdy Pancake! </div>
           </Link>
@@ -74,13 +74,6 @@ function App() {
                   <Login {...props} handleLogin={handleLogin} />
                 )}
               />
-              <PrivateRoute
-                path="/"
-                auth={user.auth}
-                component={Dashboard}
-                jwt={user.token}
-              >
-              </PrivateRoute>
               <Route
                 path="/plant/new"
                 render={(props) => (
@@ -90,7 +83,20 @@ function App() {
                   />
                 )}
               />
-              <Route path="/plants/:id" render={(props) => <ViewPlant />} />
+              <PrivateRoute
+                path="/plants/:id"
+                auth={user.auth}
+                component={ViewPlant}
+                jwt={user.token}
+              >
+              </PrivateRoute>
+              <PrivateRoute
+                path="/"
+                auth={user.auth}
+                component={Dashboard}
+                jwt={user.token}
+              >
+              </PrivateRoute>
             </Switch>
           </CentralWindow>
         </div>

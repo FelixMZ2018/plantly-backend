@@ -14,7 +14,8 @@ class Dashboard extends React.Component {
   }
 
   componentDidMount() {
-    axiosInstance.get(`api/v1/dashboard`)
+    axiosInstance.get(`api/v1/dashboard`,
+    { headers: {"Authorization" : `Bearer ${this.props.jwt}`} })
       .then(res => {
         const groups = res.data;
         this.setState({
@@ -25,7 +26,7 @@ class Dashboard extends React.Component {
   }
   render() {
     return (
-      <div className="Dashboard">
+      <div className="Dashboard lg:static lg:max-h-full lg:overflow-visible">
         {(this.state.isLoaded = false && <h2>Fetching Data!</h2>)}
         {this.state.groups.map((group) => (
           <GroupCard key={group.id} group={group}/>
