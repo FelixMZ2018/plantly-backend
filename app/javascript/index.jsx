@@ -28,7 +28,7 @@ function App() {
   const autoLogin = () => {
     console.log("YEAH");
     const token = localStorage.getItem("token");
-    if (token) {
+    if (!(typeof token == undefined)) {
       console.log(token);
       axiosInstance
         .get("auto_login",
@@ -77,8 +77,10 @@ function App() {
               <PrivateRoute
                 path="/"
                 auth={user.auth}
-                render={(props) => <Dashboard {...props} />}
-              />
+                component={Dashboard}
+                jwt={user.token}
+              >
+              </PrivateRoute>
               <Route
                 path="/plant/new"
                 render={(props) => (
