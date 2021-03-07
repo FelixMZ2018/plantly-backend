@@ -56,7 +56,7 @@ function App() {
 
   return (
     <Router basename={"app"}>
-      <div className="container w-screen p-0 text-textColor-primary">
+      <div className="container w-screen h-screen p-0 text-textColor-primary">
         <div className="sticky flex flex-wrap item-center w-screen justify-between">
           <Link to="/">
             <div className="bg-gray p-2"> Sturdy Pancake! </div>
@@ -64,7 +64,7 @@ function App() {
           <Breadcrumbs />
           <Notifications />
         </div>
-        <div className="flex flex-row flex-wrap w-screen h-screen">
+        <div className="flex flex-row w-screen h-full">
           <Sidebar />
           <CentralWindow>
             <Switch>
@@ -95,6 +95,7 @@ function App() {
                 auth={user.auth}
                 component={Dashboard}
                 jwt={user.token}
+                type={"production"}
               >
               </PrivateRoute>
             </Switch>

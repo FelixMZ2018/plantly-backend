@@ -8,7 +8,7 @@ function LoginForm(props) {
   const history = useHistory();
 
   return (
-    <div className="flex flex-col flex_nowrap justify-center h-screen w-screen content-center text-center items-center">
+    <div className="flex flex-col flex_nowrap justify-center content-center text-center items-center">
       <h1>Sturdy Pancake! </h1>
       <Formik
         className="flex flex-col"
