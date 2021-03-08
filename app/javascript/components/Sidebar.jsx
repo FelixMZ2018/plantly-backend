@@ -3,7 +3,7 @@ import React from 'react'
 class Sidebar extends React.Component{
     render () {
         return(
-            <div className="Sidebar flex-initial bg-green-dark p-2 min-h-full w-1/8 ">
+            <div className="Sidebar flex-initial bg-green-dark p-2 min-h-full w-max ">
                 <ul>
                     <li>
                         Account
