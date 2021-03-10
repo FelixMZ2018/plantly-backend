@@ -1,7 +1,7 @@
 module Api
   module V1
     class GroupsController < ApplicationController
-      before_action :find_group, only: [:show, :delete,:update]
+      before_action :find_group, only: %i[show delete update]
       rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
 
       def record_not_found
@@ -27,7 +27,6 @@ module Api
           group.save!
           render json: group
         else
-          puts "FALSE"
           render json: group.errors
         end
       end
@@ -36,7 +35,7 @@ module Api
         render json: @group
       end
 
-      def update ;end
+      def update; end
 
       def destroy; end
 

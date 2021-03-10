@@ -18,6 +18,7 @@ class Initial < ActiveRecord::Migration[6.0]
      #t.references :plant, null: true, foreign_key: true
       t.string :signal_type
       t.integer :index
+      t.string :identifier
 
       t.integer :warning_low,:default => 30
       #Ex:- :default =>''

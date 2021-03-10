@@ -1,13 +1,13 @@
 class AuthController < ApplicationController
-  skip_before_action :require_login, only: [:login, :auto_login]
+  skip_before_action :require_login, only: %i[login auto_login]
 
   def logged_in?
     !!session_user
   end
 
   def require_login
-    render json: {message: "Please Login"}, status: :unauthorized unless logged_in?
-  end 
+    render json: { message: "Please Login" }, status: :unauthorized unless logged_in?
+  end
 
   def login
     user = User.find_by(username: params[:username])
@@ -16,7 +16,7 @@ class AuthController < ApplicationController
       token = encode_token(payload)
       render json: { user: user, jwt: token, success: "Welcome back, #{user.username}" }
     else
-      render json: { failure: "Login failed, Please check credentials" },status: 401
+      render json: { failure: "Login failed, Please check credentials" }, status: 401
     end
   end
 
@@ -24,7 +24,7 @@ class AuthController < ApplicationController
     if session_user
       render json: session_user
     else
-      render json: { errors: "User not logged in" },status: 401
+      render json: { errors: "User not logged in" }, status: 401
     end
   end
 end

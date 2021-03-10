@@ -10,27 +10,25 @@ class ApplicationController < ActionController::API
   end
 
   def decoded_token
-    if auth_header
-      token = auth_header.split(" ")[1]
-      begin
-        JWT.decode(token, "secret_token", true, algorithm: "HS256")
-      rescue JWT::DecodeError
-        []
-      end
+    return unless auth_header
+
+    token = auth_header.split(" ")[1]
+    begin
+      JWT.decode(token, "secret_token", true, algorithm: "HS256")
+    rescue JWT::DecodeError
+      []
     end
   end
 
   def session_user
-    begin
     decoded_hash = decoded_token
     unless decoded_hash.empty?
       puts decoded_hash.class
       user_id = decoded_hash[0]["user_id"]
       @user = User.find_by(id: user_id)
     end
-    rescue NoMethodError
-      render json: { message: "Missing Authorization Header" }, status: :unauthorized
-    end
+  rescue NoMethodError
+    render json: { message: "Missing Authorization Header" }, status: :unauthorized
   end
 
   def logged_in?

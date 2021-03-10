@@ -6,6 +6,7 @@ module Api
       def record_not_found
         render json: { message: "Plant not found" }, status: 404
       end
+
       def index; end
 
       def new

@@ -4,7 +4,6 @@ class Datapoint < ApplicationRecord
   belongs_to :sensor
   belongs_to :user
 
-
   ## Format JSON and create sensor if not already existing
   def parse_reading(reading)
     reading["sensor"].each do |dp|

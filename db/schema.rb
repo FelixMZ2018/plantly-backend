@@ -90,6 +90,7 @@ ActiveRecord::Schema.define(version: 2021_03_04_145434) do
     t.string "sensor_type"
     t.string "signal_type"
     t.integer "index"
+    t.string "identifier"
     t.integer "warning_low", default: 30
     t.integer "warning_high", default: 80
     t.string "hardware_id"
@@ -99,8 +100,10 @@ ActiveRecord::Schema.define(version: 2021_03_04_145434) do
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "group_id"
     t.bigint "plant_id"
+    t.bigint "user_id"
     t.index ["group_id"], name: "index_sensors_on_group_id"
     t.index ["plant_id"], name: "index_sensors_on_plant_id"
+    t.index ["user_id"], name: "index_sensors_on_user_id"
   end
 
   create_table "species", force: :cascade do |t|
@@ -122,4 +125,5 @@ ActiveRecord::Schema.define(version: 2021_03_04_145434) do
   add_foreign_key "groups", "users"
   add_foreign_key "plants", "species"
   add_foreign_key "plants", "users"
+  add_foreign_key "sensors", "users"
 end

@@ -12,6 +12,7 @@ Rails.application.routes.draw do
       get '/plants/:id', to: 'plants#show'
       put '/plants/:id', to: 'plants#update'
       delete '/plants/delete/:id', to: 'plants#destroy'
+      post '/sensors/data',to: 'datapoints#create'
 
     end
   end
