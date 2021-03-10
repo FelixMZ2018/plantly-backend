@@ -77,7 +77,7 @@ ActiveRecord::Schema.define(version: 2021_03_04_145434) do
     t.bigint "sensor_id"
     t.string "image"
     t.bigint "species_id"
-    t.date "fertilizerTimestamp", default: "2021-03-04"
+    t.date "fertilizerTimestamp", default: "2021-03-10"
     t.integer "fertilizerInterval", default: 14
     t.bigint "user_id"
     t.index ["group_id"], name: "index_plants_on_group_id"
@@ -88,11 +88,13 @@ ActiveRecord::Schema.define(version: 2021_03_04_145434) do
 
   create_table "sensors", force: :cascade do |t|
     t.string "sensor_type"
-    t.integer "low_warning_threshold", default: 30
-    t.integer "high_warning_threshold", default: 80
+    t.string "signal_type"
+    t.integer "index"
+    t.integer "warning_low", default: 30
+    t.integer "warning_high", default: 80
     t.string "hardware_id"
-    t.integer "low_normalizing_value", default: 1
-    t.integer "high_normalizing_value", default: 1024
+    t.integer "calibration_low", default: 1
+    t.integer "calibration_high", default: 1024
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "group_id"

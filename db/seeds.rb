@@ -25,10 +25,9 @@ pl5 = Plant.create(group_id: gr.id, name: 'Precious Ponytail Palm')
 pl5.image.attach(io: File.open('app/assets/images/seed_images/ponytail.jpg'), filename: 'Dracaena.jpg')
 
 
-Sensor.create(hardware_id: 'Living_Room_0', plant_id: pl1.id, sensor_type: "Soil Moisture", low_normalizing_value: 800,high_normalizing_value: 400)
-Sensor.create(hardware_id: 'Living_Room_1', plant_id: pl2.id, sensor_type: "Soil Moisture", low_normalizing_value: 800,high_normalizing_value: 400)
-Sensor.create(hardware_id: 'Living_Room_2', plant_id: pl3.id, sensor_type: "Soil Moisture", low_normalizing_value: 800,high_normalizing_value: 400)
-Sensor.create(hardware_id: 'Living_Room_3', plant_id: pl4.id, sensor_type: "Soil Moisture", low_normalizing_value: 800,high_normalizing_value: 400)
-Sensor.create(hardware_id: 'Living_Room_4', plant_id: pl5.id, sensor_type: "Soil Moisture", low_normalizing_value: 800,high_normalizing_value: 400)
+Sensor.create(signal_type: "analog", index: 0,hardware_id: 'e61eb5b8-08da-4cbc-9892-faae2769f64d', plant_id: pl1.id, sensor_type: "SOIL_MOISTURE", calibration_low: 800,calibration_high: 400)
+Sensor.create(signal_type: "analog", index: 1,hardware_id: 'e61eb5b8-08da-4cbc-9892-faae2769f64d', plant_id: pl2.id, sensor_type: "SOIL_MOISTURE", calibration_low: 800,calibration_high: 400)
+Sensor.create(signal_type: "analog", index: 2,hardware_id: 'e61eb5b8-08da-4cbc-9892-faae2769f64d', plant_id: pl3.id, sensor_type: "SOIL_MOISTURE", calibration_low: 800,calibration_high: 400)
+Sensor.create(signal_type: "analog", index: 3,hardware_id: 'e61eb5b8-08da-4cbc-9892-faae2769f64d', plant_id: pl4.id, sensor_type: "SOIL_MOISTURE", calibration_low: 800,calibration_high: 400)
 
 puts 'Project Seeded'

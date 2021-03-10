@@ -16,14 +16,17 @@ class Initial < ActiveRecord::Migration[6.0]
       t.string :sensor_type
      # t.references :group, null: true, foreign_key: true
      #t.references :plant, null: true, foreign_key: true
-      t.integer :low_warning_threshold,:default => 30
+      t.string :signal_type
+      t.integer :index
+
+      t.integer :warning_low,:default => 30
       #Ex:- :default =>''
-      t.integer :high_warning_threshold,:default => 80
+      t.integer :warning_high,:default => 80
       #Ex:- :default =>''
       t.string :hardware_id
-      t.integer :low_normalizing_value, :default => 1
+      t.integer :calibration_low, :default => 1
       #Ex:- :default =>''
-      t.integer :high_normalizing_value, :default => 1024
+      t.integer :calibration_high, :default => 1024
       #Ex:- :default =>''
       t.timestamps
     end
