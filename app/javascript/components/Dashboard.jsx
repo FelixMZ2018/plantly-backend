@@ -14,7 +14,7 @@ class Dashboard extends React.Component {
 
   componentDidMount() {
     if (this.props.type === "production") {
-      axiosInstance.get(`api/v1/dashboard`,
+      axiosInstance.get(`dashboard`,
       { headers: {"Authorization" : `Bearer ${this.props.jwt}`} })
         .then(res => {
           const groups = res.data;

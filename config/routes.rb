@@ -2,20 +2,23 @@ Rails.application.routes.draw do
   default_url_options :host => "localhost:3000"
   namespace :api do
     namespace :v1 do
-      get '/dashboard', to: 'groups#dashboard'
-      get 'groups/index'
-      post 'groups/create', to: 'groups#create'
-      get 'groups/:id', to: 'groups#show'
-      put 'groups/:id', to: 'groups#update'
-      delete 'groups/:id', to: 'groups#destroy'
-      post 'plants/create', to: 'plants#create'
-      get '/plants/:id', to: 'plants#show'
-      put '/plants/:id', to: 'plants#update'
-      delete '/plants/delete/:id', to: 'plants#destroy'
+
       post '/sensors/data',to: 'datapoints#create'
 
     end
   end
+  ## FRONTEND ROUTES
+  get '/dashboard', to: 'groups#dashboard'
+  get 'groups/index'
+  post 'groups/create', to: 'groups#create'
+  get 'groups/:id', to: 'groups#show'
+  put 'groups/:id', to: 'groups#update'
+  delete 'groups/:id', to: 'groups#destroy'
+  post 'plants/create', to: 'plants#create'
+  get '/plants/:id', to: 'plants#show'
+  put '/plants/:id', to: 'plants#update'
+  delete '/plants/delete/:id', to: 'plants#destroy'
+  ## AUTH ROUTES 
   resources :users, only: [:create]
   post "/login", to: 'auth#login'
   get "/auto_login", to: 'auth#auto_login'

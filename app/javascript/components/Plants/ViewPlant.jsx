@@ -8,7 +8,7 @@ function ViewPlant (props) {
     const jwt = props.jwt
 
     function getPlant() {
-        axiosInstance.get(`/api/v1/plants/${id}`,
+        axiosInstance.get(`/plants/${id}`,
         { headers: {"Authorization" : `Bearer ${jwt}`} })
           .then(res => {
             const plant = res.data;
