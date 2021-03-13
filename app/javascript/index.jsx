@@ -17,7 +17,7 @@ import CreatePlant from "./components/Plants/CreatePlant";
 import ViewPlant from "./components/Plants/ViewPlant";
 import PrivateRoute from "./components/General/PrivateRoute";
 import Login from "./components/Login_Signup/Login";
-import Signup from './components/Login_Signup/Signup'
+import Signup from "./components/Login_Signup/Signup";
 
 function App() {
   const [user, setUser] = useState({ user: null, token: null, auth: false });
@@ -32,9 +32,7 @@ function App() {
     if (!(typeof token == undefined)) {
       console.log(token);
       axiosInstance
-        .get("auto_login",
-        { headers: {"Authorization" : `Bearer ${token}`} }
-        )
+        .get("auto_login", { headers: { Authorization: `Bearer ${token}` } })
         .then(function (response) {
           console.log(response);
           if (response.status === 200) {
@@ -47,11 +45,11 @@ function App() {
           }
         });
     }
-  }
+  };
 
   useEffect(() => {
-    if (user.auth ===false) {
-      autoLogin()
+    if (user.auth === false) {
+      autoLogin();
     }
   });
 
@@ -71,18 +69,12 @@ function App() {
             <Switch>
               <Route
                 path="/login"
-                render={(props) => (
-                  <Login {...props} handleLogin={handleLogin}/>
-                )}
+                render={(props) => <Login {...props} handleLogin={handleLogin} /> }
               />
-                            <Route
-                path="/signup"
-                render={(props) => (
-                  <Signup {...props}/>
-                )}
-              />
-              <Route
+              <Route path="/signup" render={(props) => <Signup {...props} />} />
+              <PrivateRoute
                 path="/plant/new"
+                auth={user.auth}
                 render={(props) => (
                   <CreatePlant
                     {...props}
@@ -95,16 +87,14 @@ function App() {
                 auth={user.auth}
                 component={ViewPlant}
                 jwt={user.token}
-              >
-              </PrivateRoute>
+              ></PrivateRoute>
               <PrivateRoute
                 path="/"
                 auth={user.auth}
                 component={Dashboard}
                 jwt={user.token}
                 type={"production"}
-              >
-              </PrivateRoute>
+              ></PrivateRoute>
             </Switch>
           </CentralWindow>
         </div>
