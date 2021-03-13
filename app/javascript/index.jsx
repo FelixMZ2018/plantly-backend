@@ -15,8 +15,9 @@ import CentralWindow from "./components/CentralWindow";
 import Dashboard from "./components/Dashboard";
 import CreatePlant from "./components/Plants/CreatePlant";
 import ViewPlant from "./components/Plants/ViewPlant";
-import Login from "./components/Login";
 import PrivateRoute from "./components/General/PrivateRoute";
+import Login from "./components/Login_Signup/Login";
+import Signup from './components/Login_Signup/Signup'
 
 function App() {
   const [user, setUser] = useState({ user: null, token: null, auth: false });
@@ -71,7 +72,13 @@ function App() {
               <Route
                 path="/login"
                 render={(props) => (
-                  <Login {...props} handleLogin={handleLogin} />
+                  <Login {...props} handleLogin={handleLogin}/>
+                )}
+              />
+                            <Route
+                path="/signup"
+                render={(props) => (
+                  <Signup {...props}/>
                 )}
               />
               <Route

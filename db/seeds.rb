@@ -25,56 +25,56 @@ pl5 = Plant.create(group_id: gr.id, name: 'Precious Ponytail Palm',user_id: user
 pl5.image.attach(io: File.open('app/assets/images/seed_images/ponytail.jpg'), filename: 'Dracaena.jpg')
 
 
-sr1 = Sensor.create(
-    signal_type: "analog",
-    index: 1,
-    hardware_id: 'e61eb5b8-08da-4cbc-9892-faae2769f64d',
-    user: user1,
-    group: gr,
-    plant_id: pl1.id,
-    sensor_type: "soil_moisture",
-    calibration_low: 800,
-    calibration_high: 400
-    )
-sr2 = Sensor.create(
-    signal_type: "analog",
-    index: 2,
-    hardware_id: 'e61eb5b8-08da-4cbc-9892-faae2769f64d',
-    user: user1,
-    group: gr,
-    plant_id: pl2.id,
-    sensor_type: "soil_moisture",
-    calibration_low: 800,
-    calibration_high: 400
-    )
-sr3 = Sensor.create(
-    signal_type: "analog",
-    index: 3,
-    hardware_id: 'e61eb5b8-08da-4cbc-9892-faae2769f64d',
-    user: user1,
-    group: gr,
-    plant_id: pl3.id,
-    sensor_type: "soil_moisture",
-    calibration_low: 800,
-    calibration_high: 400
-    )
-sr4 = Sensor.create(
-    signal_type: "analog",
-    index: 4,
-    hardware_id: 'e61eb5b8-08da-4cbc-9892-faae2769f64d',
-    user: user1,
-    group: gr,
-    plant_id: pl4.id,
-    sensor_type: "soil_moisture",
-    calibration_low: 800,
-    calibration_high: 400
-    ) 
-sr5 = Sensor.create(
-    signal_type: "digital",
-    index: 1,
-    hardware_id: 'e61eb5b8-08da-4cbc-9892-faae2769f64d',
-    user: user1,
-    group: gr,
-    sensor_type: "light",
-    )      
+## sr1 = Sensor.create(
+##     signal_type: "analog",
+##     index: 1,
+##     hardware_id: 'e61eb5b8-08da-4cbc-9892-faae2769f64d',
+##     user: user1,
+##     group: gr,
+##     plant_id: pl1.id,
+##     sensor_type: "soil_moisture",
+##     calibration_low: 800,
+##     calibration_high: 400
+##     )
+## sr2 = Sensor.create(
+##     signal_type: "analog",
+##     index: 2,
+##     hardware_id: 'e61eb5b8-08da-4cbc-9892-faae2769f64d',
+##     user: user1,
+##     group: gr,
+##     plant_id: pl2.id,
+##     sensor_type: "soil_moisture",
+##     calibration_low: 800,
+##     calibration_high: 400
+##     )
+## sr3 = Sensor.create(
+##     signal_type: "analog",
+##     index: 3,
+##     hardware_id: 'e61eb5b8-08da-4cbc-9892-faae2769f64d',
+##     user: user1,
+##     group: gr,
+##     plant_id: pl3.id,
+##     sensor_type: "soil_moisture",
+##     calibration_low: 800,
+##     calibration_high: 400
+##     )
+## sr4 = Sensor.create(
+##     signal_type: "analog",
+##     index: 4,
+##     hardware_id: 'e61eb5b8-08da-4cbc-9892-faae2769f64d',
+##     user: user1,
+##     group: gr,
+##     plant_id: pl4.id,
+##     sensor_type: "soil_moisture",
+##     calibration_low: 800,
+##     calibration_high: 400
+##     ) 
+## sr5 = Sensor.create(
+##     signal_type: "digital",
+##     index: 1,
+##     hardware_id: 'e61eb5b8-08da-4cbc-9892-faae2769f64d',
+##     user: user1,
+##     group: gr,
+##     sensor_type: "light",
+##     )      
 puts 'Project Seeded'

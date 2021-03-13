@@ -17,13 +17,14 @@ module Api
         @group = Group.find_by(hardware_id: hardware_token)
         render json: { message: "No Group with the Hardware ID found" }, status: 404 if @group.nil?
         update_battery_level(params["battery_level"]) unless params["battery_level"].nil?
-        JSON.parse(params["sensors"]).each do |sensor|
+        params["sensors"].each do |sensor|
+          save_datapoint(sensor)
         end
       end
 
       def create_sensor(sensor)
         Sensor.create(
-          signal_type: sensor["signal_type"],
+          signal_type: sensor["data_type"],
           index: sensor["index"],
           hardware_id: @group.hardware_id,
           user: @group.user,

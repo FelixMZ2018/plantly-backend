@@ -1,14 +1,14 @@
 import React,{useState} from "react";
 import { Formik, Field, Form } from "formik";
-import { axiosInstance } from "../clients/axiosInstance";
+import { axiosInstance } from "../../clients/axiosInstance";
 import { useHistory } from "react-router-dom";
 
 
-function LoginForm(props) {
+function Login(props) {
   const history = useHistory();
 
   return (
-    <div className="flex flex-col flex_nowrap justify-center content-center text-center items-center">
+    <div className="flex flex-col flex_nowrap justify-center content-center text-center items-center w-full bg-green-light">
       <h1>Sturdy Pancake! </h1>
       <Formik
         className="flex flex-col"
@@ -62,4 +62,4 @@ function LoginForm(props) {
   );
 }
 
-export default LoginForm;
+export default Login;

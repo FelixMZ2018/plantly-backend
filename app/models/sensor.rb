@@ -1,7 +1,7 @@
 class Sensor < ApplicationRecord
   validates_presence_of :hardware_id
   validates :sensor_type, presence: true, inclusion: { in: %w[soil_moisture temperature humidity light],
-                                                       message: "%{value} is not a valid sensor type" }
+                                                       message: "%{value}s is not a valid sensor type" }
   validates :signal_type, presence: true, inclusion: { in: %w[analog digital] }
   belongs_to :plant, optional: true
   belongs_to :group, optional: true
@@ -9,7 +9,6 @@ class Sensor < ApplicationRecord
 
   has_many :datapoints
   validates_presence_of :user_id
-
   after_create :create_identifier
   before_validation :find_user
 

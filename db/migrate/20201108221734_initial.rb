@@ -33,7 +33,7 @@ class Initial < ActiveRecord::Migration[6.0]
     end
     create_table :datapoints do |t|
      # t.references :sensor, null: false, foreign_key: true
-      t.integer :value
+      t.float :value
       t.timestamps
     end
   end

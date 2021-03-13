@@ -44,7 +44,7 @@ ActiveRecord::Schema.define(version: 2021_03_04_145434) do
   end
 
   create_table "datapoints", force: :cascade do |t|
-    t.integer "value"
+    t.float "value"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "sensor_id"
@@ -77,7 +77,7 @@ ActiveRecord::Schema.define(version: 2021_03_04_145434) do
     t.bigint "sensor_id"
     t.string "image"
     t.bigint "species_id"
-    t.date "fertilizerTimestamp", default: "2021-03-10"
+    t.date "fertilizerTimestamp", default: "2021-03-12"
     t.integer "fertilizerInterval", default: 14
     t.bigint "user_id"
     t.index ["group_id"], name: "index_plants_on_group_id"
