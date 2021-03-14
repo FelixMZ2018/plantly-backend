@@ -12,7 +12,7 @@ class GroupsController < ApplicationController
 
     def dashboard
       @group = @user.groups
-      render json: @group, include: %i[sensors], root: "groups"
+      render json: @group, include: %i[], root: "groups"
     end
 
     def index; end

@@ -3,10 +3,10 @@ class SensorSerializer < ActiveModel::Serializer
     :id,
     :last_datapoint,
     :sensor_type,
-    :low_warning_threshold,
-    :high_warning_threshold,
-    :low_normalizing_value,
-    :high_normalizing_value
+    :warning_high,
+    :warning_low,
+    :calibration_high,
+    :calibration_low
 
   def last_datapoint
     return if object.datapoints.count.zero?

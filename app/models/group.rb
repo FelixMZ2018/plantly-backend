@@ -5,4 +5,8 @@ class Group < ApplicationRecord
   has_many :sensors
   has_many :plant_sensors, through: :plants, source: :sensors
   belongs_to :user
+
+  def group_sensors
+    self.sensors.where.not(sensor_type: "soil_moisture")
+  end
 end
