@@ -30,7 +30,7 @@ class Dashboard extends React.Component {
   render() {
     return (
       <div className="Dashboard overflow-scroll">
-        <GroupSensorBar/>
+        <GroupSensorBar sensors={this.state.groups.group_sensors}/>
         {(this.state.isLoaded = false && <h2>Fetching Data!</h2>)}
         {this.state.groups.map((group) => (
           <GroupCard key={group.id} group={group}/>
