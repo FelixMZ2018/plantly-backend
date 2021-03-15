@@ -21,8 +21,7 @@ class PlantsController < ApplicationController
   end
 
   def show
-    @plant_detail = Plant.find(params[:id])
-    puts @plant_detail
+    @plant_detail = Plant.where(user_id: @user.id).includes(:group, :sensors).find(params[:id])
     render json: @plant_detail, serializer: DetailedPlantsSerializer
   end
 
@@ -37,7 +36,7 @@ class PlantsController < ApplicationController
     params.require(:plant).permit(:name, :group_id)
   end
 
-#  def plant_photo
-#    url_for(@plant.image)
-#  end
+  #  def plant_photo
+  #    url_for(@plant.image)
+  #  end
 end

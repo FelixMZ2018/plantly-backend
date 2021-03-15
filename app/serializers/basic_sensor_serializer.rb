@@ -6,9 +6,9 @@ class BasicSensorSerializer < ActiveModel::Serializer
     :warning_low,
     :last_datapoint
 
-    def last_datapoint
-      return if object.datapoints.count.zero?
-  
-      ActiveModel::SerializableResource.new(object.datapoints.last, each_serializer: DatapointSerializer)
-    end
+  def last_datapoint
+    return if object.datapoints.count.zero?
+
+    ActiveModel::SerializableResource.new(object.datapoints.last, each_serializer: DatapointSerializer)
+  end
 end

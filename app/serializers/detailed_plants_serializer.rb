@@ -3,11 +3,11 @@ class DetailedPlantsSerializer < ActiveModel::Serializer
     :group,
     :name,
     :id,
-    :detailed_sensor,
+    #    :detailed_sensor,
     :fertilizerTimestamp,
     :fertilizerInterval
 
-  def detailed_sensor
-    ActiveModel::SerializableResource.new(object.sensors, each_serializer: DetailedSensorSerializer)
-  end
+  #  def detailed_sensor
+  #    ActiveModel::SerializableResource.new(object.sensors, each_serializer: DetailedSensorSerializer)
+  #  end
 end

@@ -7,6 +7,6 @@ class Group < ApplicationRecord
   belongs_to :user
 
   def group_sensors
-    self.sensors.where.not(sensor_type: "soil_moisture")
+    sensors.where.not(sensor_type: "soil_moisture")
   end
 end

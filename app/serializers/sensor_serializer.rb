@@ -9,7 +9,7 @@ class SensorSerializer < ActiveModel::Serializer
     :calibration_low
 
   def last_datapoint
-    return if object.datapoints.count.zero?
+    #    return if object.datapoints.count.zero?
 
     ActiveModel::SerializableResource.new(object.datapoints.last, each_serializer: DatapointSerializer)
   end

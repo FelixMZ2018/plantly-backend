@@ -17,7 +17,7 @@ module Api
         @group = Group.find_by(hardware_id: hardware_token)
         render json: { message: "No Group with the Hardware ID found" }, status: 404 if @group.nil?
         update_battery_level(params["battery_level"]) unless params["battery_level"].nil?
-        update_timestamp()
+        update_timestamp
         params["sensors"].each { |sensor| save_datapoint(sensor) }
       end
 

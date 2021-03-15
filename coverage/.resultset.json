@@ -22,7 +22,7 @@
           1,
           1,
           1,
-          1,
+          null,
           1,
           1,
           1,
@@ -209,6 +209,20 @@
           1
         ]
       },
+      "/home/felix/code/sturdy-pancake-react-server/config/initializers/cors.rb": {
+        "lines": [
+          null,
+          1,
+          1,
+          1,
+          null,
+          1,
+          null,
+          null,
+          null,
+          null
+        ]
+      },
       "/home/felix/code/sturdy-pancake-react-server/config/initializers/filter_parameter_logging.rb": {
         "lines": [
           null,
@@ -284,28 +298,52 @@
         "lines": [
           1,
           1,
+          1,
+          1,
+          null,
+          1,
+          null,
+          null,
+          null,
+          null,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
           null,
           1,
           1,
           1,
           1,
-          1,
-          1,
-          1,
-          1,
-          1,
-          1,
-          1,
-          1,
-          null,
-          null,
           null,
           1,
           null,
           null
         ]
       },
+      "/home/felix/code/sturdy-pancake-react-server/app/helpers/api/v1/sensors_helper.rb": {
+        "lines": [
+          1,
+          1,
+          1,
+          null,
+          null,
+          null
+        ]
+      },
       "/home/felix/code/sturdy-pancake-react-server/app/helpers/application_helper.rb": {
+        "lines": [
+          1,
+          null
+        ]
+      },
+      "/home/felix/code/sturdy-pancake-react-server/app/helpers/auth_helper.rb": {
         "lines": [
           1,
           null
@@ -317,48 +355,65 @@
           null
         ]
       },
+      "/home/felix/code/sturdy-pancake-react-server/app/helpers/user_helper.rb": {
+        "lines": [
+          1,
+          null
+        ]
+      },
       "/home/felix/code/sturdy-pancake-react-server/app/models/datapoint.rb": {
         "lines": [
           1,
           1,
           1,
           1,
+          1,
           null,
           null,
           1,
-          1,
-          2,
-          2,
-          2,
-          2,
-          2,
-          2,
-          null,
-          null,
-          null,
-          null,
-          1,
-          2,
           0,
-          2,
-          2,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          null,
           null,
           null,
           null,
           1,
-          2,
-          2,
-          2,
+          0,
+          0,
+          0,
+          0,
+          null,
           null,
           null,
           1,
-          2,
+          0,
+          0,
+          0,
+          null,
+          null,
+          1,
+          0,
           null,
           null
         ]
       },
       "/home/felix/code/sturdy-pancake-react-server/app/models/application_record.rb": {
         "lines": [
+          1,
+          1,
+          null
+        ]
+      },
+      "/home/felix/code/sturdy-pancake-react-server/app/models/user.rb": {
+        "lines": [
+          1,
+          1,
+          1,
           1,
           1,
           null
@@ -371,6 +426,12 @@
           1,
           1,
           1,
+          1,
+          1,
+          null,
+          1,
+          0,
+          null,
           null
         ]
       },
@@ -379,12 +440,27 @@
           1,
           1,
           1,
+          null,
           1,
+          1,
+          1,
+          1,
+          null,
+          1,
+          1,
+          1,
+          1,
+          null,
+          1,
+          2,
+          2,
+          null,
+          null,
           1,
           null
         ]
       }
     },
-    "timestamp": 1614812491
+    "timestamp": 1615836898
   }
 }

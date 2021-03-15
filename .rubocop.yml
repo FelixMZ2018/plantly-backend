@@ -5,6 +5,7 @@ AllCops:
     - ./db/**/*
     - ./node_modules/**/*
     - ./config/**/*
+    - ./spec/**/*
 
 Style/FrozenStringLiteralComment:
   Enabled: false
