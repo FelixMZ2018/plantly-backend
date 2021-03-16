@@ -13,7 +13,7 @@ class GroupsController < ApplicationController
   def dashboard
     ##      @group = @user.groups.includes(:sensors).includes(:plants)
     @group = Group.where(user_id: @user.id).includes(:sensors,
-                                                     plants: [:sensors, { sensors: :last_datapoint },
+                                                     plants: [:sensors,
                                                               { image_attachment: :blob }])
     render json: @group, include: %i[], root: "groups"
   end

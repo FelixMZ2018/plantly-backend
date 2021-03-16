@@ -19,7 +19,7 @@ function Signup(props) {
         onSubmit={async (values) => {
           await new Promise((r) => setTimeout(r, 500));
 
-          axiosInstance.post("login", {
+          axiosInstance.post("user", {
             username: values.username,
             password: values.password,
           })
@@ -45,7 +45,14 @@ function Signup(props) {
             placeholder="User"
           />
 
-          <label htmlFor="lastName" className="text-green-dark">Password</label>
+          <label htmlFor="password" className="text-green-dark">Password</label>
+          <Field
+            className="self-center text-green-dark"
+            id="password"
+            name="password"
+            placeholder="Password"
+          />
+                    <label htmlFor="password" className="text-green-dark">Confirm Password</label>
           <Field
             className="self-center text-green-dark"
             id="password"
