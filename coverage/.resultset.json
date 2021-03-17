@@ -361,43 +361,18 @@
           null
         ]
       },
-      "/home/felix/code/sturdy-pancake-react-server/app/models/sensor.rb": {
+      "/home/felix/code/sturdy-pancake-react-server/app/models/user.rb": {
         "lines": [
           1,
           1,
           1,
-          null,
           1,
-          1,
-          1,
-          1,
-          null,
-          1,
-          1,
-          1,
-          1,
-          null,
-          1,
-          2,
-          2,
-          null,
-          null,
           1,
           null
         ]
       },
       "/home/felix/code/sturdy-pancake-react-server/app/models/application_record.rb": {
         "lines": [
-          1,
-          1,
-          null
-        ]
-      },
-      "/home/felix/code/sturdy-pancake-react-server/app/models/user.rb": {
-        "lines": [
-          1,
-          1,
-          1,
           1,
           1,
           null
@@ -430,6 +405,6 @@
         ]
       }
     },
-    "timestamp": 1615933579
+    "timestamp": 1615977797
   }
 }
