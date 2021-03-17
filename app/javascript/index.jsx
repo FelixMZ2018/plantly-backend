@@ -69,7 +69,9 @@ function App() {
             <Switch>
               <Route
                 path="/login"
-                render={(props) => <Login {...props} handleLogin={handleLogin} /> }
+                render={(props) => (
+                  <Login {...props} handleLogin={handleLogin} />
+                )}
               />
               <Route path="/signup" render={(props) => <Signup {...props} />} />
               <PrivateRoute
@@ -87,6 +89,13 @@ function App() {
                 auth={user.auth}
                 component={ViewPlant}
                 jwt={user.token}
+                render={(props) => (
+                  <ViewPlant
+                    {...props}
+                    jwt={user.token}
+                    id={props.match.params.id}
+                  />
+                )}
               ></PrivateRoute>
               <PrivateRoute
                 path="/"

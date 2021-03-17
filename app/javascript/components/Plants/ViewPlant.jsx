@@ -1,32 +1,36 @@
-import React, { useEffect, setState, useState } from "react";
+import React, { Component } from 'react'
 import { useParams } from "react-router-dom";
 import { axiosInstance } from "../../clients/axiosInstance";
+import PlantViewSensorCard from "../Sensors/PlantViewSensorCard";
 
-function ViewPlant(props) {
-  const id = useParams()["id"];
-  const [plant, setPlant] = useState({ plant: null });
-  const [isLoaded, setIsLoaded] = useState({ isLoaded: false });
 
-  useEffect(async () => {
-    const result = await axiosInstance.get(`/plants/${id}`, {
-      headers: { Authorization: `Bearer ${props.jwt}` },
-    });
-    setPlant({ plant: result.data });
+class ViewPlant extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      error: null,
+      isLoaded: false,
+      plant: {}};
+    }
 
-    setIsLoaded({ isLoaded: true });
-  }, []);
-
-  console.log(useParams()["id"]);
-  if (isLoaded) {
+  componentDidMount() {
+      axiosInstance.get(`/plants/${this.props.id}`,
+      { headers: {"Authorization" : `Bearer ${this.props.jwt}`} })
+        .then(res => {
+          const groups = res.data;
+          this.setState({
+            isLoaded: true,
+            plant: res.data,
+          })
+        });
+    }
+  render() {
     return (
-      <div className="ViewPlant bg-green-light flex-grow">
-        Name: 
+      <div>
+        TEST
       </div>
-    );
-  } else {
-    return (
-      <div>Loading! </div> 
     )
   }
 }
-export default ViewPlant;
+
+export default ViewPlant
