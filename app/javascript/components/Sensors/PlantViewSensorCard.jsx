@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function PlantViewSensorCard() {
+export default function PlantViewSensorCard(props) {
   function Sensor_type(params) {
     switch (params) {
       case "soil_moisture":
@@ -8,5 +8,5 @@ export default function PlantViewSensorCard() {
         break;
     }
   }
-  return <div>This is a sensor{Sensor_type(this.props.sensor.sensor_type)}</div>;
+  return <div>This is a {Sensor_type(props.sensor.sensor_type)} Sensor </div>;
 }
