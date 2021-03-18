@@ -1,6 +1,7 @@
 import React from "react";
 import PlantCardWrapper from "../Plants/PlantCardWrapper";
 import Button from "../General/Button";
+import GroupCardSensorBar from '../Sensors/GroupCardSensorBar'
 import { Link } from "react-router-dom";
 
 class GroupCard extends React.Component {
@@ -8,6 +9,7 @@ class GroupCard extends React.Component {
     return (
       <div className="GroupCard  bg-green-light p-2">
         <h3>{this.props.group.name}</h3>
+        <GroupCardSensorBar sensors={this.props.group.group_sensors}/>
         <PlantCardWrapper plants={this.props.group.plants}></PlantCardWrapper>
         <Link
           to={{

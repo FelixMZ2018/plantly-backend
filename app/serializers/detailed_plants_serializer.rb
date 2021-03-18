@@ -5,9 +5,18 @@ class DetailedPlantsSerializer < ActiveModel::Serializer
     :id,
     :detailed_sensor,
     :fertilizerTimestamp,
-    :fertilizerInterval
+    :fertilizerInterval,
+    :image_url
 
-    def detailed_sensor
-      ActiveModel::SerializableResource.new(object.sensors, each_serializer: DetailedSensorSerializer)
-   end
+  def detailed_sensor
+    ActiveModel::SerializableResource.new(object.sensors, each_serializer: DetailedSensorSerializer)
+  end
+
+  def image_url
+    if object.image.attached?
+      url_for(object.image)
+    else
+      false
+    end
+  end
 end

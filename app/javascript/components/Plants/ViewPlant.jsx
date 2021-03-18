@@ -31,8 +31,10 @@ class ViewPlant extends React.Component {
       <div className=" bg-green-light flex-grow">
         Name: {this.state.plant.name}
         Sensors: {this.state.plant.detailed_sensor.map(function(sensor,index){
-          return <PlantViewSensorCard sensor={sensor}  key={index}></PlantViewSensorCard>
+          return <PlantViewSensorCard sensor={sensor}  key={index}>
+          </PlantViewSensorCard>
         })}
+        <img src={this.state.plant.image_url}></img>
       </div>
     )
   }

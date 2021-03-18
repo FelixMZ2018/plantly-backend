@@ -1,12 +1,9 @@
 import React from "react";
+import SensorName from '../Utilities/SensorName.js'
+
 
 export default function PlantViewSensorCard(props) {
-  function Sensor_type(params) {
-    switch (params) {
-      case "soil_moisture":
-        return "Soil Moisture";
-        break;
-    }
-  }
-  return <div>This is a {Sensor_type(props.sensor.sensor_type)} Sensor </div>;
+  const sensor_string = SensorName(props.sensor.sensor_type)
+
+  return <div>This is a {sensor_string} Sensor </div>;
 }
