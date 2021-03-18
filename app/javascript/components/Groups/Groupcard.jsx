@@ -7,8 +7,8 @@ import { Link } from "react-router-dom";
 class GroupCard extends React.Component {
   render() {
     return (
-      <div className="GroupCard  bg-green-light p-2">
-        <h3>{this.props.group.name}</h3>
+      <div className="GroupCard  bg-green-light">
+        <h1 className="text-green-dark mr-5 mb-2">{this.props.group.name}</h1>
         <GroupCardSensorBar sensors={this.props.group.group_sensors}/>
         <PlantCardWrapper plants={this.props.group.plants}></PlantCardWrapper>
         <Link

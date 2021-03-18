@@ -6,7 +6,7 @@ export default function GroupCardSensorBarSensor(params) {
     const sensor_type = SensorName(params.sensor.sensor_type)
     const sensor_unit = SensorUnits(params.sensor.sensor_type)
     return (
-        <div>
+        <div className="inline">
             {sensor_type}: {params.sensor.last_datapoint.value} {sensor_unit}
         </div>
     )
