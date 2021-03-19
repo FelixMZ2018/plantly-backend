@@ -1,14 +1,14 @@
 import React,{useState} from "react";
 import { Formik, Field, Form } from "formik";
 import { axiosInstance } from "../../clients/axiosInstance";
-import { useHistory } from "react-router-dom";
+import { useHistory,Link } from "react-router-dom";
 
 
 function Signup(props) {
   const history = useHistory();
 
   return (
-    <div className="flex flex-col flex_nowrap justify-center content-center text-center items-center">
+    <div className="flex flex-col flex_nowrap justify-center content-center text-center items-center w-full bg-green-light">
       <h1>Sturdy Pancake! </h1>
       <Formik
         className="flex flex-col"
@@ -60,8 +60,11 @@ function Signup(props) {
             placeholder="Password"
           />
           <div>
+          
+          <Link to="/login">
+          <button className="w-1/3 p-2 m-4 bg-green-dark inline rounded-md shadow-lg hover:shadow-sm cursor-pointer self-start" type="submit">Login</button>
+          </Link>
           <button className="w-1/3 p-2 m-4 bg-green-dark inline rounded-md shadow-lg hover:shadow-sm cursor-pointer self-start" type="submit">Sign up</button>
-          <button className="w-1/3 p-2 m-4 bg-green-dark inline rounded-md shadow-lg hover:shadow-sm cursor-pointer self-start" type="submit">Submit</button>
           </div>
         </Form>
       </Formik>

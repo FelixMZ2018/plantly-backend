@@ -5,6 +5,7 @@ import {
   Route,
   Link,
   NavLink,
+  Redirect,
 } from "react-router-dom";
 import { axiosInstance } from "./clients/axiosInstance";
 
@@ -77,9 +78,11 @@ function App() {
               <PrivateRoute
                 path="/plant/new"
                 auth={user.auth}
+                component={CreatePlant}
                 render={(props) => (
                   <CreatePlant
                     {...props}
+                    jwt={user.token}
                     group_id={props.location.state.group_id}
                   />
                 )}

@@ -1,7 +1,7 @@
 import React,{useState} from "react";
 import { Formik, Field, Form } from "formik";
 import { axiosInstance } from "../../clients/axiosInstance";
-import { useHistory } from "react-router-dom";
+import { useHistory,Link } from "react-router-dom";
 
 
 function Login(props) {
@@ -53,11 +53,14 @@ function Login(props) {
             placeholder="Password"
           />
           <div>
-          <button className="w-1/3 p-2 m-4 bg-green-dark inline rounded-md shadow-lg hover:shadow-sm cursor-pointer self-start" type="submit">Sign up</button>
+
           <button className="w-1/3 p-2 m-4 bg-green-dark inline rounded-md shadow-lg hover:shadow-sm cursor-pointer self-start" type="submit">Submit</button>
           </div>
         </Form>
       </Formik>
+      <Link to="/signup">
+          <button className="w-1/3 p-2 m-4 bg-green-dark inline rounded-md shadow-lg hover:shadow-sm cursor-pointer self-start">Sign up</button>
+          </Link>
     </div>
   );
 }
