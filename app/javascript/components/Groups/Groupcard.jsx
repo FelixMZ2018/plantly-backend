@@ -14,9 +14,9 @@ class GroupCard extends React.Component {
           <h1 className="text-green-dark ml-5 mb-2 inline text-xl">
             {this.props.group.name}
           </h1>
-        <div className="timestamp text-right mr-5 text-green-dark inline">
-          last seen: {timestamp}
-        </div>
+          <div className="timestamp text-right mr-5 text-green-dark inline">
+            last seen: {timestamp}
+          </div>
         </div>
 
         <GroupCardSensorBar sensors={this.props.group.group_sensors} />
