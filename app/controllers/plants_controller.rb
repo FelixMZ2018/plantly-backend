@@ -12,8 +12,11 @@ class PlantsController < ApplicationController
   end
 
   def create
-    plant = Plant.create!((plant_params))
-    if plant
+    p params
+    p @user_id
+    plant = Plant.new((plant_params))
+    plant.user_id = @user.id
+    if plant.save!
       render json: plant
     else
       render json: plant.errors

@@ -78,6 +78,7 @@ function App() {
               <PrivateRoute
                 path="/plant/new"
                 auth={user.auth}
+                jwt={user.token}
                 component={CreatePlant}
                 render={(props) => (
                   <CreatePlant
