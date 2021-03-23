@@ -11,10 +11,11 @@ class ViewPlant extends React.Component {
       error: null,
       isLoaded: false,
       plant: {name: null,detailed_sensor: []},
+      jwt: this.props.jwt,
+      id: this.props.match.params.id
     }
     }
-
-  componentDidMount() {
+  componentDidMount(props) {
     const id = this.props.match.params.id;
       axiosInstance.get(`/plants/${id}`,
       { headers: {"Authorization" : `Bearer ${this.props.jwt}`} })
@@ -27,6 +28,11 @@ class ViewPlant extends React.Component {
         });
     }
   render() {
+    function delete_plant(props) {
+      axiosInstance.delete(`/plants/delete/${props.id}`,
+      { headers: {"Authorization" : `Bearer ${props.jwt}`} })
+        }
+
     return (
       <div className=" bg-green-light flex-grow">
         Name: {this.state.plant.name}
@@ -34,6 +40,7 @@ class ViewPlant extends React.Component {
           return <PlantViewSensorCard sensor={sensor}  key={index}>
           </PlantViewSensorCard>
         })}
+        <button onClick={delete_plant}>DELETE</button>
         <img src={this.state.plant.image_url}></img>
       </div>
     )

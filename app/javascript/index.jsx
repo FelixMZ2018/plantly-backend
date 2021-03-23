@@ -6,6 +6,7 @@ import {
   Link,
   NavLink,
   Redirect,
+  useHistory,
 } from "react-router-dom";
 import { axiosInstance } from "./clients/axiosInstance";
 
@@ -22,7 +23,7 @@ import Signup from "./components/Login_Signup/Signup";
 
 function App() {
   const [user, setUser] = useState({ user: null, token: null, auth: false });
-
+  const history = useHistory();
   const handleLogin = (user) => {
     setUser(user);
   };
@@ -43,6 +44,8 @@ function App() {
               token: token,
               auth: true,
             });
+            history.push("/");
+
           }
         });
     }

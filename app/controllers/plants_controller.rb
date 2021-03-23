@@ -29,7 +29,7 @@ class PlantsController < ApplicationController
   end
 
   def destroy
-    @plant = Plant.find(params[:id]).destroy
+    @plant = Plant.where(user_id: @user.id).find(params[:id]).destroy
     render json: { message: "Plant deleted" }, status: 200
   end
 
