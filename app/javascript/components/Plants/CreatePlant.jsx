@@ -6,8 +6,6 @@ import { useHistory, Link } from "react-router-dom";
 
 const CreatePlant =(props) => {
     const group_id = props.location.state.group_id
-    console.log(group_id)
-    console.log(props.jwt)
         return(
             <div className="flex flex-col flex_nowrap justify-center content-center text-center items-center w-full bg-green-light">
             <h1>Sturdy Pancake! </h1>
@@ -50,11 +48,6 @@ const CreatePlant =(props) => {
                 </div>
               </Form>
             </Formik>
-            <Link to="/signup">
-              <button className="w-1/3 p-2 m-4 bg-green-dark inline rounded-md shadow-lg hover:shadow-sm cursor-pointer self-start">
-                Sign up
-              </button>
-            </Link>
           </div>
         )
 }
