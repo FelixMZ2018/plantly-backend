@@ -45,7 +45,6 @@ function App() {
               auth: true,
             });
             history.push("/");
-
           }
         });
     }
@@ -60,15 +59,10 @@ function App() {
   return (
     <Router basename={"app"}>
       <div className="container w-screen h-screen p-0 text-textColor-primary">
-        <div className="sticky flex flex-wrap item-center w-screen justify-between">
-          <Link to="/">
-            <div className="bg-gray p-2"> Sturdy Pancake! </div>
-          </Link>
-          <Breadcrumbs />
-          <Notifications />
-        </div>
+        <div className="sticky flex flex-wrap item-center w-screen justify-between"></div>
         <div className="flex flex-row w-screen h-full">
-          <Sidebar />
+          <Sidebar></Sidebar>
+
           <CentralWindow>
             <Switch>
               <Route
