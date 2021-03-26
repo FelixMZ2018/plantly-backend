@@ -15,6 +15,8 @@ class ViewPlant extends React.Component {
       id: this.props.match.params.id,
     };
   }
+
+
   handleDelete(props) {
      axiosInstance
       .delete(`/plants/delete/${this.state.id}`, {
@@ -22,7 +24,8 @@ class ViewPlant extends React.Component {
       })
       .then(function (response) {
         if (response.status === 200) {
-          useHistory().push("/");
+          const history = useHistory();
+          history.push("/")();
         }
       });
   }
