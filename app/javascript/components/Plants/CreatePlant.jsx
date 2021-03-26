@@ -5,6 +5,8 @@ import { axiosInstance } from "../../clients/axiosInstance";
 import { useHistory, Link } from "react-router-dom";
 
 const CreatePlant =(props) => {
+  const history = useHistory();
+
     const group_id = props.location.state.group_id
         return(
             <div className="flex flex-col flex_nowrap justify-center content-center text-center items-center w-full bg-green-light">
@@ -23,7 +25,13 @@ const CreatePlant =(props) => {
                 const headers = {"Authorization" : `Bearer ${props.jwt}`}
       
                 axiosInstance
-                  .post("plants/create",data,{headers:headers});
+                  .post("plants/create",data,{headers:headers})
+                  .then(function (response) {
+                    console.log(response);
+                    if (response.status === 200) {
+                      history.push(`/plants/${response.data.id}`);
+                    }
+                  });
       
                 //        alert(JSON.stringify(values, null, 2));
               }}
