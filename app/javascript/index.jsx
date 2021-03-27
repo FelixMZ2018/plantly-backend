@@ -20,6 +20,7 @@ import ViewPlant from "./components/Plants/ViewPlant";
 import PrivateRoute from "./components/General/PrivateRoute";
 import Login from "./components/Login_Signup/Login";
 import Signup from "./components/Login_Signup/Signup";
+import CreateGroup from "./components/Groups/CreateGroup";
 
 function App() {
   const [user, setUser] = useState({ user: null, token: null, auth: false });
@@ -29,14 +30,11 @@ function App() {
   };
 
   const autoLogin = () => {
-    console.log("YEAH");
     const token = localStorage.getItem("token");
     if (!(typeof token == undefined)) {
-      console.log(token);
       axiosInstance
         .get("auto_login", { headers: { Authorization: `Bearer ${token}` } })
         .then(function (response) {
-          console.log(response);
           if (response.status === 200) {
             localStorage.setItem("token", response.data.jwt);
             handleLogin({
@@ -82,6 +80,18 @@ function App() {
                     {...props}
                     jwt={user.token}
                     group_id={props.location.state.group_id}
+                  />
+                )}
+              />
+              <PrivateRoute
+                path="/group/new"
+                auth={user.auth}
+                jwt={user.token}
+                component={CreateGroup}
+                render={(props) => (
+                  <CreateGroup
+                    {...props}
+                    jwt={user.token}
                   />
                 )}
               />

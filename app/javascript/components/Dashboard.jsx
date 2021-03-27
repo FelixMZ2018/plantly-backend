@@ -1,6 +1,8 @@
 import React from "react";
 import { axiosInstance } from '../clients/axiosInstance';
 import GroupCard from "../components/Groups/Groupcard";
+import { useHistory, Link } from "react-router-dom";
+import Button from "./General/Button";
 
 class Dashboard extends React.Component {
   constructor(props) {
@@ -33,6 +35,16 @@ class Dashboard extends React.Component {
         {this.state.groups.map((group) => (
           <GroupCard key={group.id} group={group}/>
         ))}
+                <Link
+          to={{
+            pathname: "/group/new",
+          }}
+        >
+          {" "}
+          <div className="flex justify-end pt-2">
+            <Button text="Add a new Group" />
+          </div>
+        </Link>
       </div>
     );
   }

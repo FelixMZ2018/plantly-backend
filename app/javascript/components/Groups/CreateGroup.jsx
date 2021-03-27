@@ -1,9 +1,11 @@
-import React from 'react'
+import React from 'react';
+import { render } from 'react-dom';
+import { Formik, Field, Form } from "formik";
+import { axiosInstance } from "../../clients/axiosInstance";
+import { useHistory, Link } from "react-router-dom";
 
-export default function CreateGroup() {
+export default function CreateGroup(props) {
     const history = useHistory();
-
-    const group_id = props.location.state.group_id
         return(
             <div className="flex flex-col flex_nowrap justify-center content-center text-center items-center w-full bg-green-light">
             <Formik
@@ -14,7 +16,6 @@ export default function CreateGroup() {
               onSubmit={async (values) => {
                 await new Promise((r) => setTimeout(r, 500));
                 const data =                    {
-                    group_id: group_id,
                     name: values.name,
                   }
                 const headers = {"Authorization" : `Bearer ${props.jwt}`}
@@ -39,7 +40,7 @@ export default function CreateGroup() {
                   className="self-center text-green-dark"
                   id="name"
                   name="name"
-                  placeholder="Plant Name"
+                  placeholder="Group Name"
                 />
                 <div>
                   <button
