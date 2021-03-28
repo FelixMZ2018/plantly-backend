@@ -21,6 +21,7 @@ import PrivateRoute from "./components/General/PrivateRoute";
 import Login from "./components/Login_Signup/Login";
 import Signup from "./components/Login_Signup/Signup";
 import CreateGroup from "./components/Groups/CreateGroup";
+import ViewGroup from "./components/Groups/ViewGroup";
 
 function App() {
   const [user, setUser] = useState({ user: null, token: null, auth: false });
@@ -90,6 +91,18 @@ function App() {
                 component={CreateGroup}
                 render={(props) => (
                   <CreateGroup
+                    {...props}
+                    jwt={user.token}
+                  />
+                )}
+              />
+                            <PrivateRoute
+                path="/group/:id"
+                auth={user.auth}
+                jwt={user.token}
+                component={ViewGroup}
+                render={(props) => (
+                  <ViewGroup
                     {...props}
                     jwt={user.token}
                   />

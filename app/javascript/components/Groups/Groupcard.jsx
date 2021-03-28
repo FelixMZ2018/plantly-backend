@@ -32,6 +32,16 @@ class GroupCard extends React.Component {
             <Button text="Add a Plant" />
           </div>
         </Link>
+        <Link
+          to={{
+            pathname: `/group/${this.props.group.id}`,
+          }}
+        >
+          {" "}
+          <div className="flex justify-end pt-2">
+            <Button text="View the Group" />
+          </div>
+        </Link>
       </div>
     );
   }
