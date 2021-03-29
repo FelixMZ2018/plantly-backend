@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import { useParams, withRouter, useHistory } from "react-router-dom";
 import { axiosInstance } from "../../clients/axiosInstance";
 import PlantViewSensorCard from "../Sensors/PlantViewSensorCard";
+import Button from "../General/Button"
+import ConfirmationModal from '../General/ConfirmationModal'
 
 class ViewPlant extends React.Component {
   constructor(props) {
@@ -11,6 +13,7 @@ class ViewPlant extends React.Component {
       error: null,
       isLoaded: false,
       plant: { name: null, detailed_sensor: [] },
+      modal: false,
       jwt: this.props.jwt,
       id: this.props.match.params.id,
     };
@@ -18,16 +21,27 @@ class ViewPlant extends React.Component {
 
 
   handleDelete(props) {
+    const {history} = this.props;
      axiosInstance
       .delete(`/plants/delete/${this.state.id}`, {
         headers: { Authorization: `Bearer ${this.state.jwt}` },
       })
       .then(function (response) {
         if (response.status === 200) {
-          const history = useHistory();
           history.push("/")();
         }
       });
+  }
+
+  showDeleteModal(props){
+    if (this.state.modal) {
+     return <ConfirmationModal text={"Are you sure you want to delete this plant"} function={this.handleDelete}/>
+    }
+  }
+  openDeleteModal(props){
+    this.setState({
+      modal: true
+    })
   }
 
   componentDidMount(props) {
@@ -45,6 +59,8 @@ class ViewPlant extends React.Component {
   render() {
     return (
       <div className=" bg-green-light flex-grow">
+        {this.showDeleteModal()}
+
         Name: {this.state.plant.name}
         Sensors:{" "}
         {this.state.plant.detailed_sensor.map(function (sensor, index) {
@@ -55,8 +71,10 @@ class ViewPlant extends React.Component {
             ></PlantViewSensorCard>
           );
         })}
-        <button onClick={this.handleDelete}>DELETE</button>
         <img src={this.state.plant.image_url}></img>
+        <div onClick={() => this.setState({ modal: true })} className="flex justify-end pt-2">
+            <Button text="Delete this Plant" />
+          </div>
       </div>
     );
   }
