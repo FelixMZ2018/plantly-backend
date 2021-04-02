@@ -89,24 +89,14 @@ function App() {
                 auth={user.auth}
                 jwt={user.token}
                 component={CreateGroup}
-                render={(props) => (
-                  <CreateGroup
-                    {...props}
-                    jwt={user.token}
-                  />
-                )}
+                render={(props) => <CreateGroup {...props} jwt={user.token} />}
               />
-                            <PrivateRoute
+              <PrivateRoute
                 path="/group/:id"
                 auth={user.auth}
                 jwt={user.token}
                 component={ViewGroup}
-                render={(props) => (
-                  <ViewGroup
-                    {...props}
-                    jwt={user.token}
-                  />
-                )}
+                render={(props) => <ViewGroup {...props} jwt={user.token} />}
               />
               <PrivateRoute
                 path="/plants/:id"
