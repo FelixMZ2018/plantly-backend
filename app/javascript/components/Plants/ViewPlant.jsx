@@ -64,18 +64,25 @@ class ViewPlant extends React.Component {
   render() {
     return (
       <div className=" bg-green-light flex-grow">
-        {this.showDeleteModal()}
-        Name: {this.state.plant.name}
-        Sensors:{" "}
-        {this.state.plant.detailed_sensor.map(function (sensor, index) {
-          return (
-            <PlantViewSensorCard
-              sensor={sensor}
-              key={index}
-            ></PlantViewSensorCard>
-          );
-        })}
-        <img src={this.state.plant.image_url}></img>
+        <div className="flex">
+          <div className="flex-1">
+            {this.showDeleteModal()}
+            Name: {this.state.plant.name}
+            Sensors:{" "}
+            {this.state.plant.detailed_sensor.map(function (sensor, index) {
+              return (
+                <PlantViewSensorCard
+                  sensor={sensor}
+                  key={index}
+                ></PlantViewSensorCard>
+              );
+            })}
+          </div>
+          <div className="flex-1">
+            {" "}
+            <img src={this.state.plant.image_url}></img>
+          </div>
+        </div>
         <div
           onClick={() => this.setState({ modal: true })}
           className="flex justify-end pt-2"
