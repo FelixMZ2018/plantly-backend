@@ -48,6 +48,12 @@ class ViewPlant extends React.Component {
     });
   }
 
+  image(props){
+    if (!(this.state.plant.image_url === false)) {
+      <img src={this.state.plant.image_url}></img> 
+    }
+  }
+
   componentDidMount(props) {
     axiosInstance
       .get(`/plants/${this.state.id}`, {
@@ -79,8 +85,7 @@ class ViewPlant extends React.Component {
             })}
           </div>
           <div className="flex-1">
-            {" "}
-            <img src={this.state.plant.image_url}></img>
+            {this.image}
           </div>
         </div>
         <div

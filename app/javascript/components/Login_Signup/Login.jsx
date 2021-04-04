@@ -5,6 +5,7 @@ import { useHistory, Link } from "react-router-dom";
 
 function Login(props) {
   const history = useHistory();
+  const error_message = ""
 
   return (
     <div className="flex flex-col flex_nowrap justify-center content-center text-center items-center w-full bg-green-light">
@@ -33,8 +34,11 @@ function Login(props) {
                   auth: true,
                 });
                 history.push("/");
+              } else if (response.status === 401) {
+                
               }
-            });
+            }
+            );
 
           //        alert(JSON.stringify(values, null, 2));
         }}
@@ -74,6 +78,7 @@ function Login(props) {
           Sign up
         </button>
       </Link>
+      {error_message}
     </div>
   );
 }
