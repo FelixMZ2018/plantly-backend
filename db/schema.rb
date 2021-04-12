@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_04_145434) do
+ActiveRecord::Schema.define(version: 2021_04_12_214031) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -101,6 +101,7 @@ ActiveRecord::Schema.define(version: 2021_03_04_145434) do
     t.bigint "group_id"
     t.bigint "plant_id"
     t.bigint "user_id"
+    t.boolean "warning_sensor", default: false
     t.index ["group_id"], name: "index_sensors_on_group_id"
     t.index ["plant_id"], name: "index_sensors_on_plant_id"
     t.index ["user_id"], name: "index_sensors_on_user_id"
@@ -117,6 +118,7 @@ ActiveRecord::Schema.define(version: 2021_03_04_145434) do
     t.string "password_digest"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.boolean "warning_global", default: false
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
