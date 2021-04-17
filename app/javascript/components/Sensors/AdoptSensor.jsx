@@ -1,12 +1,18 @@
 import React from 'react'
+import axiosInstance from '../../clients/axiosInstance'
 
-export default function AdoptSensor() {
-    const [data, setData] = useState({ hits: [] });
-       
+export default function AdoptSensor(props) {
+ const [Sensors, setSensors] = useState(initialState)       
         useEffect(async () => {
-          const result = await axios(
-            'https://hn.algolia.com/api/v1/search?query=redux',
-          );
+          axiosInstance.get(`adoptable/${props.group_id}`,
+          { headers: {"Authorization" : `Bearer ${this.props.jwt}`} })
+            .then(res => {
+              const groups = res.data;
+              this.setState({
+                isLoaded: true,
+                groups: groups,
+              })
+            });
        
           setData(result.data);
         });
