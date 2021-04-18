@@ -4,6 +4,7 @@ import { axiosInstance } from "../../clients/axiosInstance";
 import PlantViewSensorCard from "../Sensors/PlantViewSensorCard";
 import Button from "../General/Button";
 import ConfirmationModal from "../General/ConfirmationModal";
+import AdoptSensor from "../Sensors/AdoptSensor";
 
 class ViewPlant extends React.Component {
   constructor(props) {
@@ -75,6 +76,9 @@ class ViewPlant extends React.Component {
             {this.showDeleteModal()}
             Name: {this.state.plant.name}
             Sensors:{" "}
+            {if (this.state.detailed_sensor.length = ) {
+              <AdoptSensor></AdoptSensor>
+            }}
             {this.state.plant.detailed_sensor.map(function (sensor, index) {
               return (
                 <PlantViewSensorCard
