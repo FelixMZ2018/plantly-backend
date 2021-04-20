@@ -6,7 +6,7 @@ import { useHistory, Link } from "react-router-dom";
 function Login(props) {
   const history = useHistory();
   const error_message = "";
-  const [ErrorMessage,setErrorMessage] = useState("")
+  const [ErrorMessage, setErrorMessage] = useState("");
 
   return (
     <div className="flex flex-col flex_nowrap justify-center content-center text-center items-center w-full bg-green-light">
@@ -35,16 +35,16 @@ function Login(props) {
                   auth: true,
                 });
                 history.push("/");
-              } 
+              }
             })
-            .catch(err => {
+            .catch((err) => {
               if (err.response.status === 401) {
-                setErrorMessage("Wrong Password")
+                setErrorMessage("Wrong Password");
 
                 return;
               }
-              return console.log(err)})
-            ;
+              return console.log(err);
+            });
 
           //        alert(JSON.stringify(values, null, 2));
         }}
