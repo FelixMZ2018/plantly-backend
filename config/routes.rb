@@ -18,7 +18,7 @@ Rails.application.routes.draw do
   get '/plants/:id', to: 'plants#show'
   put '/plants/:id', to: 'plants#update'
   delete '/plants/delete/:id', to: 'plants#destroy'
-  get '/adoptable/:id', to: 'sensors#listAdoptable'
+  get '/adoptable/:id', to: 'sensors#list_adoptable'
   ## AUTH ROUTES 
   resources :users, only: [:create]
   post "/login", to: 'auth#login'
